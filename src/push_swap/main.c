@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/18 14:31:31 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:46:06 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int	main(int ac, char **av)
 {
 	t_list	*a;
 	t_list	*b;
+	int		i;
 
 	if (ac == 1)
-		return (write(2, "Error\n", 7), 0);
-
+		return (0);
+	i = 0;
+	a->content = ft_lstnew(ft_atoi(av[1]));
 }
