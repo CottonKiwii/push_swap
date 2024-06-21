@@ -6,12 +6,21 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/21 13:00:14 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:29:11 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
+
+void	tester(t_list *lst)
+{
+	while (lst)
+	{
+		ft_printf("%i", lst->content);
+		lst = lst->next;
+	}
+}
 
 t_list	**ft_make_lst(char **str)
 {
@@ -44,7 +53,7 @@ t_list	**ft_make_lst(char **str)
 int	main(int ac, char **av)
 {
 	t_list	**a;
-	t_list	**b;
+//	t_list	**b;
 	char	**temp;
 
 	if (ac > 1)
@@ -58,7 +67,7 @@ int	main(int ac, char **av)
 		a = ft_make_lst(temp);
 		if (a == NULL)
 			return (write(2, "Error\n", 7), 0);
-		while
+		tester(a);
 	}
 	return (0);
 }
