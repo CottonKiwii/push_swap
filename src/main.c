@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/24 13:37:55 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/06/24 18:34:28 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,19 @@ void	tester(t_list *lst)
 	}
 }
 
-size_t	**ft_allocate(void)
+t_list	**ft_allocate(char **av)
 {
-	size_t **lst;
+	t_list **lst;
+	int		nbr;
+	int		i;
+
+	i = 1;
+	while(av[i])
+	{
+		nbr = ft_atoi(av[i]);
+
+	}
+	return (lst);
 }
 
 int	main(int ac, char **av)
@@ -37,8 +47,8 @@ int	main(int ac, char **av)
 	{
 		if (ac == 2)
 		{
-			a = ft_allocate;
-			b = ft_allocate;
+			a = ft_allocate(av);
+			
 		}
 		tester(a);
 	}
