@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 13:18:15 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/24 18:35:37 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/06/25 12:31:13 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-	struct s_list	*prev;
 }					t_list;
 
 // SIMPLE FUNCTIONS 
