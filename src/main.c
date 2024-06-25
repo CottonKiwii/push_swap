@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/25 13:41:05 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/06/25 18:45:09 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	tester(t_type *lst)
 {
 	while (lst)
 	{
-		int	i;
-
-		i = ft_printf("%i", lst->content);
+		ft_printf("%d\n", lst->content);
 		lst = lst->next;
 	}
 }
@@ -34,49 +32,57 @@ t_type	*ft_allocate(void)
 	return (lst);
 }
 
-t_type	*ft_insert(int ac, char **str, t_type *lst)
+t_type	*ft_insert(int ac, char **str)
 {
 	int		i;
 	char	**tmp;
+	t_type	*first;
+	t_type	*cur;
 
+	i = 0;
 	if (ac == 2)
 	{
 		tmp = ft_split(str[1], ' ');
 		if (!tmp)
 			return (NULL);
 	}
-	tmp = str;
-	i = 0;
+	else
+	{
+		tmp = str;
+		i = 1;
+	}
+	first = ft_allocate();
+	if (!first)
+		return (NULL);
+	first->content = ft_atoi(tmp[i]);
+	cur = first;
+	i++;
 	while (tmp[i])
 	{
-		lst->content = ft_atoi(tmp[i]);
-		lst->next = ft_allocate();
-		if (!lst->next)
-			return (NULL);
-		lst = lst->next;
+		cur->next = ft_allocate();
+		cur = cur->next;
+		cur->content = ft_atoi(tmp[i]);
 		i++;
 	}
-	return (lst);
+	return (first);
 }
 
 int	main(int ac, char **av)
 {
 	t_type	*a;
-	t_type	*b;
 
 	if (ac == 1)
 		return (0);
-	a = ft_allocate();
-	b = ft_allocate();
+	/*b = ft_allocate();
 	if (!a || !b)
-		return (write(2, "Error\n", 7), 1);
+		return (write(2, "Error\n", 7), 1);*/
 	if (ac >= 2)
 	{
-		a = ft_insert(ac, av, a);
+		a = ft_insert(ac, av);
 		if (!a)
 			return (write(2, "Error\n", 7), 1);
+		tester(a);
 	}
-	tester(a);
 	return (0);
 }
 
