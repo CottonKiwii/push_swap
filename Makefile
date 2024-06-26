@@ -6,7 +6,7 @@
 #    By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 10:42:42 by jwolfram          #+#    #+#              #
-#    Updated: 2024/06/26 18:14:33 by jwolfram         ###   ########.fr        #
+#    Updated: 2024/06/26 18:19:03 by jwolfram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,29 +59,29 @@ LIBFT_AR := ./libft/libft.a
 all: ${NAME}
 
 ${NAME}: ${OBJS} ${LIBFT_AR}
-	${CC} ${CFLAGS} $^ ${INCLUDES} -o $@
+	@${CC} ${CFLAGS} $^ ${INCLUDES} -o $@
 	@echo "${GREEN}--------------------------${DEFAULT}"
 	@echo "${GREEN}   COMPILATION COMPLETE   ${DEFAULT}"
 	@echo "${GREEN}--------------------------${DEFAULT}"
 
 ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | ${OBJS_SORT}
-	${CC} ${CFLAGS} -c $< ${INCLUDES} -o $@
+	@${CC} ${CFLAGS} -c $< ${INCLUDES} -o $@
 
 ${LIBFT_AR}:
-	${MAKE} -C ${LIBFT_DIR}
+	@${MAKE} -C ${LIBFT_DIR}
 
 ${OBJS_SORT}:
-	mkdir -p $@
+	@mkdir -p $@
 
 ### CLEANUP COMMANDS ###
 
 clean:
-	${MAKE} $@ -C ${LIBFT_DIR}
-	${RM} ${OBJS_DIR}
+	@${MAKE} $@ -C ${LIBFT_DIR}
+	@${RM} ${OBJS_DIR}
 
 fclean: clean
-	${MAKE} $@ -C ${LIBFT_DIR}
-	${RM} ${NAME}
+	@${MAKE} $@ -C ${LIBFT_DIR}
+	@${RM} ${NAME}
 	@echo "${RED}--------------------------${DEFAULT}"
 	@echo "${RED}     CLEANUP COMPLETE     ${DEFAULT}"
 	@echo "${RED}--------------------------${DEFAULT}"
