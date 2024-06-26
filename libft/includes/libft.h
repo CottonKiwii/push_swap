@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 13:18:15 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/25 12:31:13 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/06/26 17:41:50 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
-// FT_PRINTF FUNCTIONS
-int		ft_printf(const char *format, ...);
-int		ft_print_char(char c);
-int		ft_print_str(char *str);
-int		ft_print_nbr(int nbr);
-int		ft_print_ptr(void *ptr);
-int		ft_print_hex(unsigned long hex, int format);
-int		ft_print_unsigned(unsigned int nbr);
 
 #endif	
