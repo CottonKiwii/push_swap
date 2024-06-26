@@ -1,42 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   tester.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/26 17:43:30 by jwolfram         ###   ########.fr       */
+/*   Created: 2024/06/26 17:39:44 by jwolfram          #+#    #+#             */
+/*   Updated: 2024/06/26 17:43:53 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void	tester(t_type *lst)
 {
-	t_type	*a;
-
-	if (ac == 1)
-		return (0);
-	/*b = ft_allocate();
-	if (!a || !b)
-		return (write(2, "Error\n", 7), 1);*/
-	if (ac >= 2)
+	while (lst)
 	{
-		a = ft_insert(ac, av);
-		if (!a)
-			return (write(2, "Error\n", 7), 1);
-		tester(a);
+		ft_printf("%d\n", lst->content);
+		lst = lst->next;
 	}
-	return (0);
 }
 
-/*#include "ft_printf.h"
-
-int main(int argc, char **argv)
-{
-	(void)argc;
-	(void)argv;
-	char *love_of_my_life = "Julia";
-	ft_printf("I love %s<3", love_of_my_life);
-}*/
