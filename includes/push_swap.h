@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/26 17:49:06 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:31:39 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ t_type	*ft_insert(int ac, char **str);
 t_type	*ft_allocate(void);
 
 void	tester(t_type *lst);
+
+int		swap_a(t_type **a);
 
 #endif

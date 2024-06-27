@@ -6,7 +6,7 @@
 #    By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 10:42:42 by jwolfram          #+#    #+#              #
-#    Updated: 2024/06/26 18:19:03 by jwolfram         ###   ########.fr        #
+#    Updated: 2024/06/27 18:17:32 by jwolfram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS_DIR := src
 SRCS_FILES := main \
 			  atoli \
 			  tester \
+			  swap \
 
 SRCS := ${SRCS_FILES:%=${SRCS_DIR}/%.c}
 
