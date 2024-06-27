@@ -3,15 +3,15 @@ push_swap
 ----------
 chores
 ------
-[ ] Makefile
+[x] Makefile
 [ ] No global variables
-[ ] Program name: push_swap
+[x] Program name: push_swap
 [ ] 100 numbers in less than 700 ops
 [ ] 500 numbers in less than 5500 ops
 
 coding
 ------
-[ ] 2 stacks (a and b), a having inputted numbers, b being empty
+[x] 2 stacks (a and b), a having inputted numbers, b being empty
 [ ] Instructions must be separated by a \n
 [ ] If no input, then display nothing
 [ ] If error, then "Error\n" on STD_ERR
@@ -19,7 +19,7 @@ coding
 sorting algorithm (check subject)
 ------
 swap
-[ ] sa
+[x] sa
 [ ] sb
 [ ] ss
 
