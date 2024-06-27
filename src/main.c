@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/26 17:43:30 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:33:34 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int ac, char **av)
 		a = ft_insert(ac, av);
 		if (!a)
 			return (write(2, "Error\n", 7), 1);
+		tester(a);
+		swap_a(&a);
 		tester(a);
 	}
 	return (0);
