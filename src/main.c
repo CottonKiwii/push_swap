@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/27 18:33:34 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:02:30 by CottonKiwii      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ int	main(int ac, char **av)
 	t_type	*a;
 
 	if (ac == 1)
-		return (0);
+		return (ERR);
 	/*b = ft_allocate();
 	if (!a || !b)
-		return (write(2, "Error\n", 7), 1);*/
+		return (write(2, "Error\n", 7), ERR);*/
 	if (ac >= 2)
 	{
 		a = ft_insert(ac, av);
 		if (!a)
-			return (write(2, "Error\n", 7), 1);
+			return (write(2, "Error\n", 7), ERR);
 		tester(a);
-		swap_a(&a);
+		rotate_a(&a);
 		tester(a);
 	}
-	return (0);
+	return (SUCC);
 }
 
 /*#include "ft_printf.h"
