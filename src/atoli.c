@@ -3,15 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   atoli.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:38:02 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/26 17:38:38 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:12:57 by CottonKiwii      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
+
+void	ft_set_nodes(t_type **lst)
+{
+	t_type	*last;
+
+	last = *lst;
+	(*lst)->first = *lst;
+	while (last)
+		last = last->next;
+	(*lst)->last = last;
+}
 
 t_type	*ft_allocate(void)
 {
