@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 10:42:42 by jwolfram          #+#    #+#              #
-#    Updated: 2024/06/27 18:17:32 by jwolfram         ###   ########.fr        #
+#    Updated: 2024/06/28 13:03:51 by CottonKiwii      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS_FILES := main \
 			  atoli \
 			  tester \
 			  swap \
+			  rotate \
 
 SRCS := ${SRCS_FILES:%=${SRCS_DIR}/%.c}
 
