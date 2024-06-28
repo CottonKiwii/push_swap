@@ -6,15 +6,16 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/28 13:02:30 by CottonKiwii      ###   ########.fr       */
+/*   Updated: 2024/06/28 17:10:09 by CottonKiwii      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
 
 int	main(int ac, char **av)
 {
-	t_type	*a;
+	t_llist *a;
 
 	if (ac == 1)
 		return (ERR);
@@ -26,9 +27,9 @@ int	main(int ac, char **av)
 		a = ft_insert(ac, av);
 		if (!a)
 			return (write(2, "Error\n", 7), ERR);
-		tester(a);
+		tester(&a);
 		rotate_a(&a);
-		tester(a);
+		tester(&a);
 	}
 	return (SUCC);
 }
