@@ -6,23 +6,12 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:38:02 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/28 14:12:57 by CottonKiwii      ###   ########.fr       */
+/*   Updated: 2024/06/28 17:10:29 by CottonKiwii      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
-
-void	ft_set_nodes(t_type **lst)
-{
-	t_type	*last;
-
-	last = *lst;
-	(*lst)->first = *lst;
-	while (last)
-		last = last->next;
-	(*lst)->last = last;
-}
 
 t_type	*ft_allocate(void)
 {
@@ -34,37 +23,49 @@ t_type	*ft_allocate(void)
 	return (lst);
 }
 
-t_type	*ft_insert(int ac, char **str)
+t_type	*ft_insert_helper(char **temp, t_type **node, int i)
+{
+	(*node)->first = *node;
+	(*node)->prev = NULL;
+	while (temp[i])
+	{
+		(*node)->next = ft_allocate();
+		if (!(*node)->next)
+			return (NULL);
+		(*node)->prev = *node;
+		*node = (*node)->next;
+		(*node)->content = ft_atoi(temp[i]);
+		i++;
+	}
+	(*node)->last = *node;
+	(*node)->next = NULL;
+	return (*node);
+}
+
+t_llist	*ft_insert(int ac, char **str)
 {
 	int		i;
-	char	**tmp;
-	t_type	*first;
-	t_type	*cur;
+	char	**temp;
+	t_type	*node;
 
 	i = 0;
 	if (ac == 2)
 	{
-		tmp = ft_split(str[1], ' ');
-		if (!tmp)
+		temp = ft_split(str[1], ' ');
+		if (!temp)
 			return (NULL);
 	}
 	else
 	{
-		tmp = str;
+		temp = str;
 		i = 1;
 	}
-	first = ft_allocate();
-	if (!first)
+	node = ft_allocate();
+	if (!node)
 		return (NULL);
-	first->content = ft_atoi(tmp[i]);
-	cur = first;
+	node->content = ft_atoi(temp[i]);
+	node->first = node;
 	i++;
-	while (tmp[i])
-	{
-		cur->next = ft_allocate();
-		cur = cur->next;
-		cur->content = ft_atoi(tmp[i]);
-		i++;
-	}
-	return (first);
+	node = ft_insert_helper(temp, &node, i);
+	return (node);
 }
