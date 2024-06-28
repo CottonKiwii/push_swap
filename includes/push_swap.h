@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/28 14:02:44 by CottonKiwii      ###   ########.fr       */
+/*   Updated: 2024/06/28 17:09:22 by CottonKiwii      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,26 @@ typedef struct s_link
 {
 	int				content;
 	struct s_link	*next;
-	struct s_link	*first;
-	struct s_link	*last;
+	struct s_link	*prev;
+
+
+	struct s_link	*switch_lst;
 }					t_type;
+
+typedef struct s_llist
+{
+	t_type	*first;
+	t_type	*last;
+}	t_llist;
 
 # define ERR 0
 # define SUCC 1
 
 t_type	*ft_insert(int ac, char **str);
+t_type	*ft_insert_helper(char **temp, t_type **lst, int i);
 t_type	*ft_allocate(void);
 
-void	tester(t_type *lst);
+void	tester(t_type **lst);
 
 int		swap_a(t_type **a);
 int		swap_b(t_type **b);
