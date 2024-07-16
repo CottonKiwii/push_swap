@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/28 17:09:22 by CottonKiwii      ###   ########.fr       */
+/*   Updated: 2024/07/16 16:33:19 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct s_link
+typedef struct s_type
 {
 	int				content;
-	struct s_link	*next;
-	struct s_link	*prev;
+	struct s_type	*next;
+	struct s_type	*prev;
 
 
-	struct s_link	*switch_lst;
+	struct s_type	*switch_lst;
 }					t_type;
 
-typedef struct s_llist
+typedef struct s_link
 {
 	t_type	*first;
 	t_type	*last;
-}	t_llist;
+}	t_link;
 
 # define ERR 0
 # define SUCC 1
