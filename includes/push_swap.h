@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/16 16:33:19 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/18 17:22:02 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,34 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct s_type
+typedef struct s_node
 {
 	int				content;
-	struct s_type	*next;
-	struct s_type	*prev;
-
-
-	struct s_type	*switch_lst;
-}					t_type;
+	struct s_node	*next;
+	struct s_node	*prev;
+}					t_node;
 
 typedef struct s_link
 {
-	t_type	*first;
-	t_type	*last;
+	t_node			*first;
+	t_node			*last;
+	char			name;
+	int				len;
 }	t_link;
 
 # define ERR 0
 # define SUCC 1
 
-t_type	*ft_insert(int ac, char **str);
-t_type	*ft_insert_helper(char **temp, t_type **lst, int i);
-t_type	*ft_allocate(void);
+t_node	*ft_insert(int ac, char **str);
+t_node	*ft_insert_helper(char **temp, t_node **lst, int i);
+t_node	*ft_allocate(void);
 
-void	tester(t_type **lst);
+void	tester(t_node **lst);
 
-int		swap_a(t_type **a);
-int		swap_b(t_type **b);
-int		swap_swap(t_type **a, t_type **b);
+int		swap_a(t_node **a);
+int		swap_b(t_node **b);
+int		swap_swap(t_node **a, t_node **b);
 
-int	rotate_a(t_type **a);
+int	rotate_a(t_node **a);
 
 #endif
