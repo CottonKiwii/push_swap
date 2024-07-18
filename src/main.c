@@ -6,16 +6,27 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/28 17:10:09 by CottonKiwii      ###   ########.fr       */
+/*   Updated: 2024/07/18 17:53:30 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
 
+void	ft_stack_init(t_link *stack, char c)
+{
+	stack->name = c;
+	stack->len = 0;
+	stack->first = NULL;
+	stack->last = NULL;
+}
+
 int	main(int ac, char **av)
 {
-	t_llist *a;
+	t_link	stack_a;
+	t_link	stack_b;
+	t_node	*a;
+	t_node	*b;
 
 	if (ac == 1)
 		return (ERR);
@@ -28,8 +39,9 @@ int	main(int ac, char **av)
 		if (!a)
 			return (write(2, "Error\n", 7), ERR);
 		tester(&a);
-		rotate_a(&a);
-		tester(&a);
+		ft_stack_init(stack_a);
+//		rotate_a(&a);
+//		tester(&a);
 	}
 	return (SUCC);
 }

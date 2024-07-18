@@ -6,26 +6,25 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:38:02 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/06/28 17:10:29 by CottonKiwii      ###   ########.fr       */
+/*   Updated: 2024/07/18 17:53:32 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-t_type	*ft_allocate(void)
+t_node	*ft_allocate(void)
 {
-	t_type	*lst;
+	t_node	*lst;
 
-	lst = (t_type *)ft_calloc(1, sizeof(t_type));
+	lst = (t_node *)ft_calloc(1, sizeof(t_node));
 	if (!lst)
 		return (NULL);
 	return (lst);
 }
 
-t_type	*ft_insert_helper(char **temp, t_type **node, int i)
+t_node	*ft_insert_helper(char **temp, t_node **node, int i)
 {
-	(*node)->first = *node;
 	(*node)->prev = NULL;
 	while (temp[i])
 	{
@@ -37,16 +36,15 @@ t_type	*ft_insert_helper(char **temp, t_type **node, int i)
 		(*node)->content = ft_atoi(temp[i]);
 		i++;
 	}
-	(*node)->last = *node;
 	(*node)->next = NULL;
 	return (*node);
 }
 
-t_llist	*ft_insert(int ac, char **str)
+t_node	*ft_insert(int ac, char **str)
 {
 	int		i;
 	char	**temp;
-	t_type	*node;
+	t_node	*node;
 
 	i = 0;
 	if (ac == 2)
@@ -64,7 +62,6 @@ t_llist	*ft_insert(int ac, char **str)
 	if (!node)
 		return (NULL);
 	node->content = ft_atoi(temp[i]);
-	node->first = node;
 	i++;
 	node = ft_insert_helper(temp, &node, i);
 	return (node);
