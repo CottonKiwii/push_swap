@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:38:02 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/18 17:53:32 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/19 11:53:36 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ t_node	*ft_allocate(void)
 
 t_node	*ft_insert_helper(char **temp, t_node **node, int i)
 {
+	*node = ft_allocate();
+	if (!node)
+		return (NULL);
+	(*node)->content = ft_atoi(temp[i]);
+	i++;
 	(*node)->prev = NULL;
 	while (temp[i])
 	{
@@ -40,7 +45,7 @@ t_node	*ft_insert_helper(char **temp, t_node **node, int i)
 	return (*node);
 }
 
-t_node	*ft_insert(int ac, char **str)
+t_node	*ft_insert(int ac, char **str, t_link stack)
 {
 	int		i;
 	char	**temp;
@@ -58,11 +63,7 @@ t_node	*ft_insert(int ac, char **str)
 		temp = str;
 		i = 1;
 	}
-	node = ft_allocate();
-	if (!node)
-		return (NULL);
-	node->content = ft_atoi(temp[i]);
-	i++;
-	node = ft_insert_helper(temp, &node, i);
+	node = ft_insert(temp, &node, i);
+	update_stack(stack, &node);
 	return (node);
 }
