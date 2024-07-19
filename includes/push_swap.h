@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/18 17:22:02 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/19 17:12:35 by CottonKiwii      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ t_node	*ft_allocate(void);
 
 void	tester(t_node **lst);
 
-int		swap_a(t_node **a);
-int		swap_b(t_node **b);
-int		swap_swap(t_node **a, t_node **b);
+void	ft_swap(t_link *stack);
+void	ft_ss(t_link *stack_a, t_link *stack_b);
 
-int	rotate_a(t_node **a);
+void	ft_rotate(t_link *stack);
+void	ft_rr(t_link *stack_a, t_link *stack_b);
 
 #endif
