@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:38:02 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/19 11:53:36 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/19 19:25:06 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,31 @@ t_node	*ft_allocate(void)
 	return (lst);
 }
 
-t_node	*ft_insert_helper(char **temp, t_node **node, int i)
+t_node	*ft_insert_helper(char **temp, int i)
 {
-	*node = ft_allocate();
+	t_node	*node;
+
+	node = ft_allocate();
 	if (!node)
 		return (NULL);
-	(*node)->content = ft_atoi(temp[i]);
+	node->content = ft_atoi(temp[i]);
 	i++;
-	(*node)->prev = NULL;
+	node->prev = NULL;
 	while (temp[i])
 	{
-		(*node)->next = ft_allocate();
-		if (!(*node)->next)
+		node->next = ft_allocate();
+		if (!node->next)
 			return (NULL);
-		(*node)->prev = *node;
-		*node = (*node)->next;
-		(*node)->content = ft_atoi(temp[i]);
+		node->prev = node;
+		node = node->next;
+		node->content = ft_atoi(temp[i]);
 		i++;
 	}
-	(*node)->next = NULL;
-	return (*node);
+	node->next = NULL;
+	return (node);
 }
 
-t_node	*ft_insert(int ac, char **str, t_link stack)
+t_node	*ft_insert(int ac, char **str, t_link *stack)
 {
 	int		i;
 	char	**temp;
@@ -63,7 +65,7 @@ t_node	*ft_insert(int ac, char **str, t_link stack)
 		temp = str;
 		i = 1;
 	}
-	node = ft_insert(temp, &node, i);
-	update_stack(stack, &node);
+	node = ft_insert_helper(temp, i);
+	stack_update(stack, node);
 	return (node);
 }

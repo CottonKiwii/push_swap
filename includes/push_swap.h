@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/19 17:12:35 by CottonKiwii      ###   ########.fr       */
+/*   Updated: 2024/07/19 19:26:07 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,17 @@ typedef struct s_link
 # define ERR 0
 # define SUCC 1
 
-t_node	*ft_insert(int ac, char **str);
-t_node	*ft_insert_helper(char **temp, t_node **lst, int i);
+t_node	*ft_insert(int ac, char **str, t_link *stack);
+t_node	*ft_insert_helper(char **temp, int i);
 t_node	*ft_allocate(void);
 
-void	tester(t_node **lst);
+void	stack_init(t_link *stack, char c);
+void	stack_update(t_link *stack, t_node *cur);
+
+void	tester(t_link *stack);
 
 void	ft_swap(t_link *stack);
 void	ft_ss(t_link *stack_a, t_link *stack_b);
-
 void	ft_rotate(t_link *stack);
 void	ft_rr(t_link *stack_a, t_link *stack_b);
 

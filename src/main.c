@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/19 11:56:39 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/19 19:25:32 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 	if (ac >= 2)
 	{
 		stack_init(&stack_a, 'a');
-		ft_insert(ac, av, stack_a);
+		ft_insert(ac, av, &stack_a);
 		tester(&stack_a);
 //		rotate_a(&a);
 //		tester(&a);
