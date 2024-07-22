@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
+/*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/27 17:43:19 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/22 19:26:01 by jwolfram         ###   ########.fr       */
+/*   Created: 2024/07/22 19:35:09 by jwolfram          #+#    #+#             */
+/*   Updated: 2024/07/22 19:42:27 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
 #include "libft.h"
 
-void	ft_swap(t_link *stack)
+void	ft_free(t_link *stack)
 {
 	t_node	*cur;
-	t_node	*temp;
+	t_node	*node;
 
-	cur = stack->first;
-	temp = cur->next;
-	cur->next = temp->next;
-	temp->next = cur;
-	cur = temp;
-	stack_update(stack, cur);
+	while (cur)
+	{
+		node = cur->next;
+		free(cur);
+		cur = node;
+	}
 }
 
-void	ft_ss(t_link *stack_a, t_link *stack_b)
+t_node	*ft_allocate(void)
 {
-	ft_swap(stack_a);
-	ft_swap(stack_b);
+	t_node	*lst;
+
+	lst = (t_node *)ft_calloc(1, sizeof(t_node));
+	if (!lst)
+		return (NULL);
+	return (lst);
 }
+

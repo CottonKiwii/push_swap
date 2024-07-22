@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:39:44 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/22 15:14:13 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/22 19:27:28 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,5 @@ void	tester(t_link *stack)
 		cur = cur->next;
 	}
 	ft_printf("\n");
-	cur = stack->last;
-	while (cur)
-	{
-		ft_printf("%d\n", cur->content);
-		cur = cur->prev;
-	}
 }
 
