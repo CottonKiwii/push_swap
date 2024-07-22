@@ -6,7 +6,7 @@
 #    By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 10:42:42 by jwolfram          #+#    #+#              #
-#    Updated: 2024/06/28 16:46:10 by CottonKiwii      ###   ########.fr        #
+#    Updated: 2024/07/22 14:35:04 by jwolfram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ DEFAULT := \033[0m
 SRCS_DIR := src
 
 SRCS_FILES := main \
+			  stack \
 			  atoli \
 			  tester \
 			  swap \
@@ -80,13 +81,14 @@ ${OBJS_SORT}:
 clean:
 	@${MAKE} $@ -C ${LIBFT_DIR}
 	@${RM} ${OBJS_DIR}
+	@echo "${RED}--------------------------${DEFAULT}"
+	@echo "${RED}     CLEANUP COMPLETE     ${DEFAULT}"
+	@echo "${RED}--------------------------${DEFAULT}"
+
 
 fclean: clean
 	@${MAKE} $@ -C ${LIBFT_DIR}
 	@${RM} ${NAME}
-	@echo "${RED}--------------------------${DEFAULT}"
-	@echo "${RED}     CLEANUP COMPLETE     ${DEFAULT}"
-	@echo "${RED}--------------------------${DEFAULT}"
 
 re: fclean all
 

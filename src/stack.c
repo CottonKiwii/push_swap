@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tester.c                                           :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
+/*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 17:39:44 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/22 15:14:13 by jwolfram         ###   ########.fr       */
+/*   Created: 2024/07/19 11:34:59 by jwolfram          #+#    #+#             */
+/*   Updated: 2024/07/22 15:00:26 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "push_swap.h"
 
-void	tester(t_link *stack)
+void	stack_init(t_link *stack, char c)
 {
-	t_node	*cur;
-
-	cur = stack->first;
-	while (cur)
-	{
-		ft_printf("%d\n", cur->content);
-		cur = cur->next;
-	}
-	ft_printf("\n");
-	cur = stack->last;
-	while (cur)
-	{
-		ft_printf("%d\n", cur->content);
-		cur = cur->prev;
-	}
+	stack->name = c;
+	stack->len = 0;
+	stack->first = NULL;
+	stack->last = NULL;
 }
 
+void	stack_update(t_link *stack, t_node *cur)
+{
+	int	i;
+
+	i = 0;
+	stack->first = cur;
+	while (cur->next)
+	{
+		i++;
+		cur = cur->next;
+	}
+	stack->last = cur;
+	stack->len = i;
+}

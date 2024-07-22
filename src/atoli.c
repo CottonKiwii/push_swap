@@ -6,10 +6,11 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:38:02 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/19 19:25:06 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/22 15:13:33 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "libft.h"
 #include "push_swap.h"
 
@@ -26,6 +27,7 @@ t_node	*ft_allocate(void)
 t_node	*ft_insert_helper(char **temp, int i)
 {
 	t_node	*node;
+	t_node	*cur;
 
 	node = ft_allocate();
 	if (!node)
@@ -33,17 +35,18 @@ t_node	*ft_insert_helper(char **temp, int i)
 	node->content = ft_atoi(temp[i]);
 	i++;
 	node->prev = NULL;
+	cur = node;
 	while (temp[i])
 	{
-		node->next = ft_allocate();
-		if (!node->next)
+		cur->next = ft_allocate();
+		if (!cur->next)
 			return (NULL);
-		node->prev = node;
-		node = node->next;
-		node->content = ft_atoi(temp[i]);
+		cur->next->prev = cur;
+		cur = cur->next;
+		cur->content = ft_atoi(temp[i]);
 		i++;
 	}
-	node->next = NULL;
+	cur->next = NULL;
 	return (node);
 }
 

@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:43:19 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/19 17:09:34 by CottonKiwii      ###   ########.fr       */
+/*   Updated: 2024/07/22 14:25:24 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_swap(t_link *stack)
 	t_node	*cur;
 	t_node	*temp;
 
+	cur = stack->first;
 	temp = cur->next;
 	cur->next = temp->next;
 	temp->next = cur;
