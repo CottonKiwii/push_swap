@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/23 14:33:29 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/23 19:34:40 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ typedef struct s_link
 # define SUCC 1
 
 void	stack_init(t_link *stack, char c);
-t_link	*ft_set_init(int ac, char **str, t_link *stack);
-t_link	*ft_set_stack(char **temp, t_link *stack);
 t_node	*ft_allocate(void);
+void	ft_free(t_link *stack, int i);
+
+void	ft_set_stack(int ac, char **str, t_link *stack);
+int		ft_isvalid(char *str, t_link *stack);
 
 void	tester(t_link *stack);
 
