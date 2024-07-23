@@ -6,7 +6,7 @@
 #    By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 10:42:42 by jwolfram          #+#    #+#              #
-#    Updated: 2024/07/22 14:35:04 by jwolfram         ###   ########.fr        #
+#    Updated: 2024/07/23 14:32:55 by jwolfram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ SRCS_DIR := src
 
 SRCS_FILES := main \
 			  stack \
-			  atoli \
 			  tester \
 			  swap \
 			  rotate \
