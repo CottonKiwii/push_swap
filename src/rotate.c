@@ -4,6 +4,10 @@
 
 void	ft_rotate(t_link *stack)
 {
-	(void)stack;
+	t_node	*first;
+	t_node	*last;
+
+	first = stack->first;
+	last = stack->last;
 	return ;
 }

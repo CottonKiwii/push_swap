@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/23 19:35:54 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:13:43 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 int	main(int ac, char **av)
 {
 	t_link	stack_a;
-//	t_link	stack_b;
 
 	if (ac == 1)
 		return (ERR);
@@ -26,10 +25,9 @@ int	main(int ac, char **av)
 		ft_set_stack(ac, av, &stack_a);
 		tester(&stack_a);
 		ft_swap(&stack_a);
-		//tester(&stack_a);
+		tester(&stack_a);
 	}
 	ft_free(&stack_a, SUCC);
-	return (SUCC);
 }
 
 /*#include "ft_printf.h"

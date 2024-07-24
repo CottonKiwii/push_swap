@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 11:34:59 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/24 11:38:47 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/24 20:21:26 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,47 +39,55 @@ int	ft_isvalid(char *str, t_link *stack)
 	return (free(check), i);
 }
 
-void	stack_append(char *str, t_link *stack)
+int	stack_append(char *str, t_link *stack)
 {
 	t_node	*node;
 
 	node = ft_allocate();
 	if (!node)
-		ft_free(stack, ERR);
+		return (ERR);
 	if (!stack->last)
 	{
 		stack->first = node;
 		node->content = ft_isvalid(str, stack);
 		stack->last = node;
 		stack->len = 1;
-		return ;
+		return (SUCC);
 	}
+	stack->last->next = node;
 	node->content = ft_isvalid(str, stack);
 	if (ft_nodecmp(node, stack, stack->len))
-		ft_free(stack, ERR);
-	stack->last->next = node;
+		return (ERR);
 	node->prev = stack->last;
 	stack->last = node;
 	stack->len++;
+	return (SUCC);
 }
 
-void	ft_set_stack(int ac, char **str, t_link *stack)
+void	ft_set_stack(int ac, char **av, t_link *stack)
 {
-	char	**temp;
+	char	**str;
 	int		i;
+	int		check;
 
+	check = 0;
 	if (ac == 2)
 	{
-		temp = ft_split(str[1], ' ');
-		if (!temp)
+		str = ft_split(av[1], ' ');
+		if (!str)
 			ft_free(stack, ERR);
+		check = 1;
 	}
 	else
-		temp = &(str[1]);
+		str = &(av[1]);
 	i = 0;
-	while(temp[i])
+	while(str[i])
 	{
-		stack_append(temp[i], stack);
+		stack_append(str[i], stack);
 		i++;
 	}
+	if (check)
+		ft_alcohol(str);
+	if (stack->len <= 1)
+		ft_free(stack, SUCC);
 }

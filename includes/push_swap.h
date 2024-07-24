@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/24 11:29:39 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/24 19:58:38 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_link
 void	stack_init(t_link *stack, char c);
 t_node	*ft_allocate(void);
 void	ft_free(t_link *stack, int i);
+void	ft_alcohol(char **str);
 
 int		ft_nodecmp(t_node *node, t_link *stack, int len);
 void	ft_set_stack(int ac, char **str, t_link *stack);
