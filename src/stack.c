@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 11:34:59 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/23 19:45:06 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/24 11:38:47 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	stack_append(char *str, t_link *stack)
 		return ;
 	}
 	node->content = ft_isvalid(str, stack);
+	if (ft_nodecmp(node, stack, stack->len))
+		ft_free(stack, ERR);
 	stack->last->next = node;
 	node->prev = stack->last;
 	stack->last = node;
