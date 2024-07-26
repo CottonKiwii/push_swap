@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/24 19:58:38 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/26 10:58:03 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	ft_alcohol(char **str);
 
 int		ft_nodecmp(t_node *node, t_link *stack, int len);
 void	ft_set_stack(int ac, char **str, t_link *stack);
-int		ft_isvalid(char *str, t_link *stack);
+int		ft_stack_append(char **str, t_link *stack);
+int		ft_isvalid(char **str, t_link *stack, int i);
 
 void	tester(t_link *stack);
 
