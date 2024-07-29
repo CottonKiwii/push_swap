@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 11:34:59 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/26 16:56:32 by CottonKiwii      ###   ########.fr       */
+/*   Updated: 2024/07/29 14:33:30 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ void	stack_feed(t_link *stack, int ac, char **av)
 	if (!str)
 		ft_exit();
 	if (!ft_set_stack())
+	{
+		free(str);
 		ft_exit();
+	}
 	if (check)
 		free(str);
 }
