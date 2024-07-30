@@ -6,14 +6,14 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 19:35:09 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/24 20:06:38 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:42:29 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
-void	ft_free(t_link *stack, int i)
+void	ft_exit(t_link *stack, int i)
 {
 	t_node	*cur;
 	t_node	*temp;
@@ -33,7 +33,7 @@ void	ft_free(t_link *stack, int i)
 	exit(0);
 }
 
-void	ft_alcohol(char **str)
+void	ft_free(char **str)
 {
 	int	i;
 
@@ -64,13 +64,14 @@ int	ft_nodecmp(t_node *node, t_link *stack, int len)
 {
 	t_node	*cur;
 
+	len -= 1;
 	if (len <= 0)
 		return (0);
 	cur = stack->first;
 	while (cur && len > 0)
 	{
 		if (cur->content == node->content)
-			ft_free(stack, ERR);
+			ft_exit(stack, ERR);
 		cur = cur->next;
 		len--;
 	}

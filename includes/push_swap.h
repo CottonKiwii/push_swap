@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/26 10:58:03 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:44:10 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,16 @@ typedef struct s_link
 # define ERR 0
 # define SUCC 1
 
-void	stack_init(t_link *stack, char c);
 t_node	*ft_allocate(void);
-void	ft_free(t_link *stack, int i);
-void	ft_alcohol(char **str);
-
+void	ft_exit(t_link *stack, int i);
+void	ft_free(char **str);
 int		ft_nodecmp(t_node *node, t_link *stack, int len);
-void	ft_set_stack(int ac, char **str, t_link *stack);
-int		ft_stack_append(char **str, t_link *stack);
-int		ft_isvalid(char **str, t_link *stack, int i);
+
+void	stack_init(t_link *stack, char c);
+t_link	*stack_feed(t_link *stack, int ac, char **av);
+char	**ft_set_str(char **av, int check);
+int		ft_set_stack(t_link *stack, char **str);
+int		ft_set_content(t_link *stack, char **str);
 
 void	tester(t_link *stack);
 

@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 11:34:59 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/29 19:11:49 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:40:43 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,53 @@ char	**ft_set_str(char **av, int check)
 	return (str);
 }
 
-ft_set_stack(t_link	*stack, char **str)
+int	ft_set_content(t_link *stack, char **str)
+{
+	t_node	*node;
+	char	*check;
+	int		nbr;
+	int		i;
+
+	i = 0;
+	node = stack->first;	
+	while (str[i])
+	{
+		nbr = ft_atoi(str[i]);
+		check = ft_itoa(nbr);
+		if (ft_strncmp(str[i], check, ft_strlen(str[i])))
+			return (free(check), ERR);
+		node->content = nbr;
+		node = node->next;
+		i++;	
+	}
+	return (free(check), SUCC);
+}
+
+int	ft_set_stack(t_link *stack, char **str)
 {
 	t_node	*node;
 	int i;
 
 	i = 0;
-	node = stack->first;
 	while (str[i])
 	{
 		node = ft_allocate();
+		if (!node)
+			return (ERR);
+		if (!stack->last)
+			stack->first = node;
+		else
+		{
+			stack->last->next = node;
+			node->prev = stack->last;
+		}
+		stack->last = node;
+		stack->len++;
+		i++;
 	}
+	if (!ft_set_content(stack, str))
+		return (ERR);
+	return (SUCC);
 }
 
 t_link	*stack_feed(t_link *stack, int ac, char **av)
@@ -59,12 +95,11 @@ t_link	*stack_feed(t_link *stack, int ac, char **av)
 		check = 1;
 	str = ft_set_str(av, check);
 	if (!str)
-		ft_exit();
-	if (!ft_set_stack())
+		ft_exit(stack);
+	if (!ft_set_stack(stack, str) || check)
 	{
-		free(str);
-		ft_exit();
+		ft_free(str);
+		ft_exit(stack);
 	}
-	if (check)
-		free(str);
+	return (stack);
 }
