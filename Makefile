@@ -6,7 +6,7 @@
 #    By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 10:42:42 by jwolfram          #+#    #+#              #
-#    Updated: 2024/07/23 16:15:25 by jwolfram         ###   ########.fr        #
+#    Updated: 2024/07/31 17:34:38 by jwolfram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ ${NAME}: ${OBJS} ${LIBFT_AR}
 	@echo "${GREEN}--------------------------${DEFAULT}"
 
 ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | ${OBJS_SORT}
-	@${CC} ${CFLAGS} -c $< ${INCLUDES} -o $@
+	@${CC} ${CFLAGS} -g -c $< ${INCLUDES} -o $@
 
 ${LIBFT_AR}:
 	@${MAKE} -C ${LIBFT_DIR}

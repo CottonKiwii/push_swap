@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/31 12:06:55 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/31 18:15:36 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_link
 
 t_node	*ft_allocate(void);
 void	ft_exit(t_link *stack, int i);
-void	ft_free(char **str);
+void	ft_free(char **str, int check);
 int		ft_nodecmp(t_node *node, t_link *stack, int len);
 
 void	stack_init(t_link *stack, char c);
