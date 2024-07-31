@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 11:34:59 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/30 17:40:43 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:37:47 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	ft_set_content(t_link *stack, char **str)
 		if (ft_strncmp(str[i], check, ft_strlen(str[i])))
 			return (free(check), ERR);
 		node->content = nbr;
+		if (ft_nodecmp(node, stack, stack->len))
+			return (free(check), ERR);
 		node = node->next;
 		i++;	
 	}
@@ -95,11 +97,11 @@ t_link	*stack_feed(t_link *stack, int ac, char **av)
 		check = 1;
 	str = ft_set_str(av, check);
 	if (!str)
-		ft_exit(stack);
+		ft_exit(stack, 1);
 	if (!ft_set_stack(stack, str) || check)
 	{
 		ft_free(str);
-		ft_exit(stack);
+		ft_exit(stack, 1);
 	}
 	return (stack);
 }
