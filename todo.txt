@@ -4,7 +4,7 @@ push_swap
 chores
 ------
 [x] Makefile
-[ ] No global variables
+[x] No global variables
 [x] Program name: push_swap
 [ ] 100 numbers in less than 700 ops
 [ ] 500 numbers in less than 5500 ops
@@ -13,15 +13,15 @@ coding
 ------
 [x] 2 stacks (a and b), a having inputted numbers, b being empty
 [ ] Instructions must be separated by a \n
-[ ] If no input, then display nothing
+[x] If no input, then display nothing
 [ ] If error, then "Error\n" on STD_ERR
 
 sorting algorithm (check subject)
 ------
 swap
 [x] sa
-[ ] sb
-[ ] ss
+[x] sb
+[x] ss
 
 push
 [ ] pa

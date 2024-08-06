@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/31 12:13:13 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/06 18:12:16 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,13 @@ int	main(int ac, char **av)
 		return (ERR);
 	stack_init(&stack_a, 'a');
 	stack_feed(&stack_a	, ac, av);
+	ft_printf("ORIGINAL:\n");
 	tester(&stack_a);
 	ft_swap(&stack_a);
+	ft_printf("SWAP:\n");
+	tester(&stack_a);
+	ft_rotate(&stack_a);
+	ft_printf("ROTATE:\n");
 	tester(&stack_a);
 	ft_exit(&stack_a, SUCC);
 }
