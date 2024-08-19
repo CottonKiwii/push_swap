@@ -6,26 +6,22 @@ void	ft_rotate(t_link *stack)
 {
 	t_node	*first;
 	t_node	*last;
-	t_node	*nptr;
 
 	if (!stack->first->next)
 		return ;
 	first = stack->first;
 	last = stack->last;
-	nptr = last->next;
 	if (!first->next->next)
 	{
-		first->next = nptr;
+		first->next = NULL;
 		last->next = first;
-		last->prev = first->prev;
+		last->prev = NULL;
 		first->prev = last;
 	}
 	else
 	{
-		last->next = first->next;
-		first->next = nptr;
-		nptr = first->prev;
-		first->prev = last->prev;
+		last->next = first;
+		first->prev = last;
 		last->prev = nptr;
 		last->next->prev = last;
 		first->prev->next = first;
