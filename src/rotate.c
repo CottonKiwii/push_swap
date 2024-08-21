@@ -1,5 +1,4 @@
 
-#include "ft_printf.h"
 #include "push_swap.h"
 
 void	ft_rotate(t_link *stack)
@@ -10,20 +9,19 @@ void	ft_rotate(t_link *stack)
 	if (!stack->first->next)
 		return ;
 	first = stack->first;
+	stack->first = stack->first->next;
 	last = stack->last;
-	if (!first->next->next)
-	{
-		first->next = NULL;
-		last->next = first;
-		first->prev = last;
-		stack->first = last;
-	}
-	else
-	{
-		last->next = first;
-
-	}
+	stack->first->prev = NULL;
+	first->prev = last;
+	last->next = first;
+	first->next = NULL;
 	stack->last = first;
+}
+
+void	ft_rr(t_link *stack_a, t_link *stack_b)
+{
+	ft_rotate(stack_a);
+	ft_rotate(stack_b);
 }
 
 void	ft_reverse_rotate(t_link *stack)
@@ -35,20 +33,16 @@ void	ft_reverse_rotate(t_link *stack)
 		return ;
 	first = stack->first;
 	last = stack->last;
-	if (!first->next->next)
-	{
-		first->next = NULL;
-		last->next = first;
-		first->prev = last;
-		stack->last = first;
-	}
-	else
-	{
-		last->next = first;
-		first->prev = last;
-		last->prev->next = NULL;
-		stack->last = last->prev;
-	}
+	stack->last = stack->last->prev;
+	stack->last->next = NULL;
+	last->next = first;
+	first->prev = last;
 	last->prev = NULL;
 	stack->first = last;
+}
+
+void	ft_rrr(t_link *stack_a, t_link *stack_b)
+{
+	ft_reverse_rotate(stack_a);
+	ft_reverse_rotate(stack_b);
 }

@@ -6,12 +6,11 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:43:19 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/31 18:32:18 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:09:13 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
 
 void	ft_swap(t_link *stack)
 {

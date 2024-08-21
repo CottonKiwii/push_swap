@@ -6,21 +6,12 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 11:34:59 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/31 18:35:47 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:14:52 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
-#include "ft_printf.h"
-
-void	stack_init(t_link *stack, char c)
-{
-	stack->name = c;
-	stack->len = 0;
-	stack->first = NULL;
-	stack->last = NULL;
-}
 
 int	ft_set_content(t_link *stack, char **str)
 {
@@ -38,6 +29,7 @@ int	ft_set_content(t_link *stack, char **str)
 		if (!check || ft_strncmp(str[i], check, ft_strlen(str[i])))
 			return (free(check), ERR);
 		node->content = nbr;
+		node->procsd = 1;
 		if (!ft_nodecmp(node, stack, stack->len))
 			return (free(check), ERR);
 		node = node->next;
@@ -58,6 +50,7 @@ int	ft_set_stack(t_link *stack, char **str)
 		node = ft_allocate();
 		if (!node)
 			return (ERR);
+		node->procsd = 0;
 		if (!stack->last)
 			stack->first = node;
 		else

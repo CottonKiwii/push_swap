@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 19:35:09 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/31 18:37:12 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:12:49 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,14 @@ t_node	*ft_allocate(void)
 	return (lst);
 }
 
+void	stack_init(t_link *stack, char c)
+{
+	stack->name = c;
+	stack->len = 0;
+	stack->first = NULL;
+	stack->last = NULL;
+}
+
 int	ft_nodecmp(t_node *node, t_link *stack, int len)
 {
 	t_node	*cur;
@@ -67,7 +75,7 @@ int	ft_nodecmp(t_node *node, t_link *stack, int len)
 	cur = stack->first;
 	while (cur && len > 0)
 	{
-		if (cur->content == node->content && cur != node)
+		if (cur->content == node->content && cur != node && cur->procsd)
 			return (ERR);
 		cur = cur->next;
 		len--;

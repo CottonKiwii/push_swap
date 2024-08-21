@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/07/31 18:15:36 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/21 15:46:12 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_node
 {
 	int				content;
+	int				procsd;
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
@@ -51,5 +52,7 @@ void	ft_swap(t_link *stack);
 void	ft_ss(t_link *stack_a, t_link *stack_b);
 void	ft_rotate(t_link *stack);
 void	ft_rr(t_link *stack_a, t_link *stack_b);
+void	ft_reverse_rotate(t_link *stack);
+void	ft_push(t_link *stack_from, t_link *stack_to);
 
 #endif
