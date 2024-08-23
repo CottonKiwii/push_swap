@@ -6,7 +6,7 @@
 #    By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 10:42:42 by jwolfram          #+#    #+#              #
-#    Updated: 2024/08/21 15:47:05 by jwolfram         ###   ########.fr        #
+#    Updated: 2024/08/23 18:24:13 by jwolfram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS_FILES := main \
 			  swap \
 			  rotate \
 			  push \
+			  sort \
 			  utils \
 
 SRCS := ${SRCS_FILES:%=${SRCS_DIR}/%.c}

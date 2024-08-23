@@ -15,6 +15,7 @@ coding
 [ ] Instructions must be separated by a \n
 [x] If no input, then display nothing
 [ ] If error, then "Error\n" on STD_ERR
+[ ] Function that checks, if stack is sorted
 
 sorting algorithm (check subject)
 ------
@@ -24,18 +25,18 @@ swap
 [x] ss
 
 push
-[ ] pa
-[ ] pb
+[x] pa
+[x] pb
 
 rotate
-[ ] ra
-[ ] rb
-[ ] rr
+[x] ra
+[x] rb
+[x] rr
 
 reverse rotate
-[ ] rra
-[ ] rrb
-[ ] rrr
+[x] rra
+[x] rrb
+[x] rrr
 
 bonus
 ------

@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/21 15:46:12 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:23:39 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ void	ft_ss(t_link *stack_a, t_link *stack_b);
 void	ft_rotate(t_link *stack);
 void	ft_rr(t_link *stack_a, t_link *stack_b);
 void	ft_reverse_rotate(t_link *stack);
+void	ft_rrr(t_link *stack_a, t_link *stack_b);
 void	ft_push(t_link *stack_from, t_link *stack_to);
+
+int		ft_issorted(t_link *stack);
 
 #endif
