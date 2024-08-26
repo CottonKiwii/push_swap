@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/23 18:24:56 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:13:29 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ int	main(int ac, char **av)
 	stack_init(&stack_a, 'a');
 	stack_init(&stack_b, 'b');
 	stack_feed(&stack_a	, ac, av);
+	threeway_sort(&stack_a, &stack_b);
 
-	ft_printf("ORIGINAL:\n");
+	/*ft_printf("ORIGINAL:\n");
 	tester(&stack_a);
 	
 	ft_swap(&stack_a);
@@ -54,7 +55,7 @@ int	main(int ac, char **av)
 	if (!ft_issorted(&stack_a))
 		ft_printf("NOT SORTED");
 	else
-		ft_printf("IS SORTED");
+		ft_printf("IS SORTED");*/
 
 	ft_exit(&stack_a, SUCC);
 }

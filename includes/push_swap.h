@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/23 18:23:39 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:12:38 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ typedef struct s_link
 	char			name;
 	int				len;
 }	t_link;
+
+typedef enum e_loc
+{
+	TOP_A,
+	BOTTOM_A,
+	TOP_B,
+	BOTTOM_B
+}	t_loc;
 
 # define ERR 0
 # define SUCC 1
@@ -57,5 +65,7 @@ void	ft_rrr(t_link *stack_a, t_link *stack_b);
 void	ft_push(t_link *stack_from, t_link *stack_to);
 
 int		ft_issorted(t_link *stack);
+void	threeway_sort(t_link *stack_a, t_link *stack_b);
+void	sent_to(t_link *stack_a, t_link *stack_b, t_loc loc);
 
 #endif
