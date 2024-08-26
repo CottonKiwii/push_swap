@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 18:06:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/26 15:20:44 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:50:37 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,28 +60,31 @@ void	threeway_sort(t_link *stack_a, t_link *stack_b)
 	t_node *comp;	
 	int		big;
 	int		mid;
-	int		count;
 	int		i;
 
 
 	mid = stack_a->len / 3;
 	big = mid * 2;
 	i = stack_a->len;
-	while (i > 0)
+	comp = stack_a->first;
+	while (comp)
 	{
-		count = 0;
-		cur = stack_a->first->next;
-		comp = stack_a->first;
+		cur = stack_a->first;
+		comp->procsd = 0;
 		while (cur)
 		{
-			if (comp->content > cur->content)
-				count++;
+			if (comp != cur && comp->content > cur->content)
+				comp->procsd++;
 			cur = cur->next;
 		}
-		ft_printf("%d\n", count);
-		if (count >= big)
+		comp = comp->next;
+	}
+	while (i > 0)
+	{
+		comp = stack_a->first;
+		if (comp->procsd >= big)
 			sent_to(stack_a, stack_b, BOTTOM_A);
-		else if (count >= mid)
+		else if (comp->procsd >= mid)
 			sent_to(stack_a, stack_b, TOP_B);
 		else
 			sent_to(stack_a, stack_b, BOTTOM_B);
