@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/26 15:13:29 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:59:28 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@ int	main(int ac, char **av)
 {
 	t_link	stack_a;
 	t_link	stack_b;
+	t_chunk	chunk;
 
 	if (ac <= 1)
 		return (ERR);
 	stack_init(&stack_a, 'a');
 	stack_init(&stack_b, 'b');
 	stack_feed(&stack_a	, ac, av);
-	threeway_sort(&stack_a, &stack_b);
+	chunk.len = stack_a.len;
+	chunk.loc = TOP_A;
+	threeway_sort(&stack_a, &stack_b, chunk);
 
 	/*ft_printf("ORIGINAL:\n");
 	tester(&stack_a);

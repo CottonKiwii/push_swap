@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/26 15:38:04 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/28 16:15:28 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,19 @@ typedef enum e_loc
 	BOTTOM_B
 }	t_loc;
 
+typedef struct s_chunk
+{
+	int				len;
+	t_loc			loc;
+}	t_chunk;
+
+typedef struct s_split
+{
+	t_chunk			big;
+	t_chunk			mid;
+	t_chunk			min;
+}	t_split;
+
 # define ERR 0
 # define SUCC 1
 
@@ -64,8 +77,9 @@ void	ft_reverse_rotate(t_link *stack);
 void	ft_rrr(t_link *stack_a, t_link *stack_b);
 void	ft_push(t_link *stack_from, t_link *stack_to);
 
+void	split_init(t_split *split);
 int		ft_issorted(t_link *stack);
-void	threeway_sort(t_link *stack_a, t_link *stack_b);
+void	threeway_sort(t_link *stack_a, t_link *stack_b, t_chunk chunk);
 void	sent_to(t_link *stack_a, t_link *stack_b, t_loc loc);
 
 #endif
