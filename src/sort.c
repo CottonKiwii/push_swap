@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 18:06:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/29 13:56:09 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:34:15 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void set_count(t_link *stack, t_chunk chunk)
 		chunk.len--;
 	}
 }
+
+void	send_from_to(t_link *a, t_link *b, t_loc from)
 
 void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk)
 {
