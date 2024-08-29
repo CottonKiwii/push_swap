@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 18:06:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/29 12:23:15 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/29 12:35:50 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,32 @@ void	sent_to(t_link *stack_a, t_link *stack_b, t_loc loc)
 		ft_printf("pb\nrb\n");
 		ft_push(stack_a, stack_b);
 		ft_rotate(stack_b);
+	}
+}
+
+void set_count(t_link *stack, t_chunk chunk)
+{
+	t_node	*cur;
+	t_node	*comp;
+	int		len;
+
+	len = chunk.len;
+	if (chunk.loc == TOP_A || chunk.loc == TOP_B)
+		comp = stack->first;
+	else
+		comp = stack->last;
+	while (len > 0)
+	{
+		cur = stack->first;
+		comp->procsd = 0;
+		while (cur)
+		{
+			if (comp != cur && comp->content > cur->content)
+				comp->procsd++;
+			cur = cur->next;
+		}
+		comp = comp->next;
+		len--;
 	}
 }
 
