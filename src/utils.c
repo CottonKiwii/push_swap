@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 19:35:09 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/21 14:12:49 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/29 12:20:43 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,6 @@ t_node	*ft_allocate(void)
 	return (lst);
 }
 
-void	stack_init(t_link *stack, char c)
-{
-	stack->name = c;
-	stack->len = 0;
-	stack->first = NULL;
-	stack->last = NULL;
-}
-
 int	ft_nodecmp(t_node *node, t_link *stack, int len)
 {
 	t_node	*cur;
@@ -83,4 +75,23 @@ int	ft_nodecmp(t_node *node, t_link *stack, int len)
 	return (SUCC);
 }
 
+int	ft_issorted(t_link *stack)
+{
+	t_node	*cur;
+	t_node	*next;
 
+	cur = stack->first;
+	if (!stack->first->next)
+		return (SUCC);
+	next = stack->first->next;
+	while (cur)
+	{
+		if (!cur->next)
+			break ;
+		next = cur->next;
+		if (cur->content >= next->content)	
+			return (ERR);
+		cur = cur->next;
+	}
+	return (SUCC);
+}
