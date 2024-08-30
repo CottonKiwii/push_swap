@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/28 16:15:28 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/30 13:49:11 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_node
 	int				procsd;
 	struct s_node	*next;
 	struct s_node	*prev;
-}					t_node;
+}	t_node;
 
 typedef struct s_link
 {
@@ -40,6 +40,13 @@ typedef enum e_loc
 	BOTTOM_B
 }	t_loc;
 
+typedef enum e_size
+{
+	MIN,
+	MID,
+	MAX
+}	t_size;
+
 typedef struct s_chunk
 {
 	int				len;
@@ -48,7 +55,7 @@ typedef struct s_chunk
 
 typedef struct s_split
 {
-	t_chunk			big;
+	t_chunk			max;
 	t_chunk			mid;
 	t_chunk			min;
 }	t_split;

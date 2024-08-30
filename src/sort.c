@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 18:06:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/29 16:34:15 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/30 13:52:30 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,34 +61,37 @@ void set_count(t_link *stack, t_chunk chunk)
 	}
 }
 
-void	send_from_to(t_link *a, t_link *b, t_loc from)
+void	send_from(t_link *a, t_link *b, t_loc from, t_size to)
+{
+
+}
 
 void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk)
 {
 	t_node	*comp;
-	int		big;
+	int		max;
 	int		mid;
 
 	mid = chunk.len / 3;
-	big = mid * 2;
+	max = mid * 2;
 	split_init(split);
 	while (chunk.len > 0)
 	{
 		comp = a->first;
-		if (comp->procsd >= big)
+		if (comp->procsd >= max)
 		{
-			split->big.len++;
-			sent_to(a, b, BOTTOM_A);
+			split->max.len++;
+			send_from(a, b, chunk.loc, MAX);
 		}
 		else if (comp->procsd >= mid)
 		{
 			split->mid.len++;
-			sent_to(a, b, TOP_B);
+			send_from(a, b, chunk.loc, MID);
 		}
 		else
 	{
 			split->min.len++;
-			sent_to(a, b, BOTTOM_B);
+			send_from(a, b, chunk.loc, MIN);
 		}
 		chunk.len--;
 	}
@@ -105,5 +108,5 @@ void	threeway_sort(t_link *stack_a, t_link *stack_b, t_chunk chunk)
 	else
 		set_count(stack_b, chunk);
 	split_chunk(stack_a, stack_b, &split, chunk);
-	threeway_sort(stack_a, stack_b, split.big);
+	threeway_sort(stack_a, stack_b, split.max);
 }
