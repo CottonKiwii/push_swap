@@ -6,33 +6,12 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 18:06:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/30 13:52:30 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:57:04 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
-
-
-void	sent_to(t_link *stack_a, t_link *stack_b, t_loc loc)
-{
-	if (loc == BOTTOM_A)
-	{
-		ft_printf("ra\n");
-		ft_rotate(stack_a);
-	}
-	else if (loc == TOP_B)
-	{
-		ft_printf("pb\n");
-		ft_push(stack_a, stack_b);
-	}
-	else if (loc == BOTTOM_B)
-	{
-		ft_printf("pb\nrb\n");
-		ft_push(stack_a, stack_b);
-		ft_rotate(stack_b);
-	}
-}
 
 void set_count(t_link *stack, t_chunk chunk)
 {
@@ -61,9 +40,50 @@ void set_count(t_link *stack, t_chunk chunk)
 	}
 }
 
+void	send_from_helper(t_link *a, t_link *b, t_loc from, t_size to)
+{
+	if (from == BOTTOM_A)
+	{
+		if (to == MAX)
+			send_to(a, b, TOP_A);
+		else if (to == MID)
+			send_to(a, b, TOP_B);
+		else
+			send_to(a, b, BOTTOM_B);
+	}
+	else if (from == BOTTOM_B)
+	{
+		if (to == MAX)
+			send_to(a, b, TOP_A);
+		else if (to == MID)
+			send_to(a, b, BOTTOM_A);
+		else
+			send_to(a, b, TOP_B);
+	}
+}
+
 void	send_from(t_link *a, t_link *b, t_loc from, t_size to)
 {
-
+	if (from == TOP_A)
+	{
+		if (to == MAX)
+			send_to(a, b, BOTTOM_A);
+		else if (to == MID)
+			send_to(a, b, TOP_B);
+		else
+			send_to(a, b, BOTTOM_B);
+	}
+	else if (from == TOP_B)
+	{
+		if (to == MAX)
+			send_to(a, b, TOP_A);
+		else if (to == MID)
+			send_to(a, b, BOTTOM_A);
+		else
+			send_to(a, b, BOTTOM_B);
+	}
+	else
+		send_from_helper(a, b, from, to);
 }
 
 void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk)
@@ -97,9 +117,14 @@ void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk)
 	}
 }
 
+#include <stdio.h>
 void	threeway_sort(t_link *stack_a, t_link *stack_b, t_chunk chunk)
 {
 	t_split	split;
+	static int summons = 0;
+
+	summons++;
+	printf("function was summoned %d times\n", summons);
 
 	if (chunk.len == 1 || chunk.len == 2)
 		return ;

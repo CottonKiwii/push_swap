@@ -6,7 +6,7 @@
 #    By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 10:42:42 by jwolfram          #+#    #+#              #
-#    Updated: 2024/08/29 12:24:09 by jwolfram         ###   ########.fr        #
+#    Updated: 2024/08/30 16:28:00 by jwolfram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,13 +36,17 @@ SRCS_DIR := src
 
 SRCS_FILES := main \
 			  stack \
-			  tester \
-			  swap \
-			  rotate \
-			  push \
 			  sort \
-			  utils \
-			  init \
+			  tester \
+			  operations\swap \
+			  operations\rotate \
+			  operations\push \
+			  utils\utils \
+			  utils\init \
+			  send\top_a \
+			  send\top_b \
+			  send\bottom_a \
+			  send\bottom_b \
 
 SRCS := ${SRCS_FILES:%=${SRCS_DIR}/%.c}
 

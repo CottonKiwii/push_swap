@@ -6,14 +6,14 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 11:34:59 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/21 14:14:52 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:30:09 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
-int	ft_set_content(t_link *stack, char **str)
+int	set_content(t_link *stack, char **str)
 {
 	t_node	*node;
 	char	*check;
@@ -39,7 +39,7 @@ int	ft_set_content(t_link *stack, char **str)
 	return (SUCC);
 }
 
-int	ft_set_stack(t_link *stack, char **str)
+int	set_stack(t_link *stack, char **str)
 {
 	t_node	*node;
 	int i;
@@ -62,7 +62,7 @@ int	ft_set_stack(t_link *stack, char **str)
 		stack->len++;
 		i++;
 	}
-	if (!ft_set_content(stack, str))
+	if (!set_content(stack, str))
 		return (ERR);
 	return (SUCC);
 }
@@ -85,7 +85,7 @@ t_link	*stack_feed(t_link *stack, int ac, char **av)
 	{
 		av = &av[1];
 	}
-	if (!ft_set_stack(stack, av))
+	if (!set_stack(stack, av))
 	{
 		ft_free(av, check);
 		ft_exit(stack, ERR);
