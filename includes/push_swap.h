@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/31 16:03:03 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/31 18:31:27 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ int		ft_nodecmp(t_node *node, t_link *stack, int len);
 int		ft_issorted(t_link *stack);
 
 void	stack_init(t_link *stack, char c);
-void	split_init(t_split *split);
+void	split_init(t_split *split, t_loc loc);
+void	split_init_helper(t_split *split);
 
 t_link	*stack_feed(t_link *stack, int ac, char **av);
 int		set_stack(t_link *stack, char **str);

@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 18:06:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/31 17:25:30 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/08/31 18:31:59 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk)
 
 	mid = chunk.len / 3;
 	max = mid * 2;
-	split_init(split);
+	split_init(split, chunk.loc);
 	while (chunk.len > 0)
 	{
 		comp = get_comp(a, b, chunk);
@@ -157,16 +157,35 @@ void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk)
 		}
 		chunk.len--;
 	}
+	ft_printf("chunk was split\n");
 }
 
-void	small_sort(t_link *stack, t_chunk chunk)
+void	small_sort(t_link *a, t_chunk chunk)
 {
 	if (chunk.len == 1)
 		return ;
-	if (stack->first->content > stack->first->next->content)
+	if (a->first->content > a->first->next->content)
 	{
 		ft_printf("sa\n");
-		ft_swap(stack);
+		ft_swap(a);
+	}
+}
+
+void	print_loc(t_loc loc)
+{
+	switch (loc) {
+		case (TOP_A):
+			ft_printf("chunk loc is TOP_A\n");
+			break ;
+		case (BOTTOM_A):
+			ft_printf("chunk loc is BOTTOM_A\n");
+			break ;
+		case (TOP_B):
+			ft_printf("chunk loc is TOP_B\n");
+			break ;
+		case (BOTTOM_B):
+			ft_printf("chunk loc is BOTTOM_B\n");
+			break ;
 	}
 }
 
@@ -174,9 +193,16 @@ void	threeway_sort(t_link *stack_a, t_link *stack_b, t_chunk chunk)
 {
 	t_split	split;
 
+	ft_printf("chunk len is %d\n", chunk.len);
+	print_loc(chunk.loc);
 	if (chunk.len == 1 || chunk.len == 2)
 	{
+		if (chunk.loc != TOP_A)
+			send_from(stack_a, stack_b, chunk.loc, MAX);
+		if (chunk.loc != TOP_A && chunk.len == 2)
+			send_from(stack_a, stack_b, chunk.loc, MAX);
 		small_sort(stack_a, chunk);
+		ft_printf("chunk was sorted, returning from recursion\n");
 		return ;
 	}
 	if (chunk.loc == TOP_A || chunk.loc == BOTTOM_A)
@@ -186,4 +212,5 @@ void	threeway_sort(t_link *stack_a, t_link *stack_b, t_chunk chunk)
 	split_chunk(stack_a, stack_b, &split, chunk);
 	threeway_sort(stack_a, stack_b, split.max);
 	threeway_sort(stack_a, stack_b, split.mid);
+	threeway_sort(stack_a, stack_b, split.min);
 }
