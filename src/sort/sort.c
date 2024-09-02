@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 18:06:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/31 18:31:59 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/02 14:53:36 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,6 @@ void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk)
 		}
 		chunk.len--;
 	}
-	ft_printf("chunk was split\n");
 }
 
 void	small_sort(t_link *a, t_chunk chunk)
@@ -171,30 +170,19 @@ void	small_sort(t_link *a, t_chunk chunk)
 	}
 }
 
-void	print_loc(t_loc loc)
+void	update_loc(t_link *stack_a, t_link *stack_b, t_chunk *chunk)
 {
-	switch (loc) {
-		case (TOP_A):
-			ft_printf("chunk loc is TOP_A\n");
-			break ;
-		case (BOTTOM_A):
-			ft_printf("chunk loc is BOTTOM_A\n");
-			break ;
-		case (TOP_B):
-			ft_printf("chunk loc is TOP_B\n");
-			break ;
-		case (BOTTOM_B):
-			ft_printf("chunk loc is BOTTOM_B\n");
-			break ;
-	}
+	if (chunk->loc == BOTTOM_A && stack_a->len == chunk->len)
+		chunk->loc = TOP_A;
+	else if (chunk->loc == BOTTOM_B && stack_b->len == chunk->len)
+		chunk->loc = TOP_B;
 }
 
 void	threeway_sort(t_link *stack_a, t_link *stack_b, t_chunk chunk)
 {
 	t_split	split;
 
-	ft_printf("chunk len is %d\n", chunk.len);
-	print_loc(chunk.loc);
+	update_loc(stack_a, stack_b, &chunk);
 	if (chunk.len == 1 || chunk.len == 2)
 	{
 		if (chunk.loc != TOP_A)
@@ -202,7 +190,6 @@ void	threeway_sort(t_link *stack_a, t_link *stack_b, t_chunk chunk)
 		if (chunk.loc != TOP_A && chunk.len == 2)
 			send_from(stack_a, stack_b, chunk.loc, MAX);
 		small_sort(stack_a, chunk);
-		ft_printf("chunk was sorted, returning from recursion\n");
 		return ;
 	}
 	if (chunk.loc == TOP_A || chunk.loc == BOTTOM_A)
