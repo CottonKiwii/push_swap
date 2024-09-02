@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 14:28:08 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/23 18:00:44 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:44:39 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,6 @@ void	ft_push(t_link *stack_from, t_link *stack_to)
 		stack_to->first->next = first_to;
 		first_to->prev = stack_to->first;
 	}
+	stack_from->len--;
+	stack_to->len++;
 }

@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/31 18:31:27 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:11:58 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_exit(t_link *stack, int i);
 void	ft_free(char **str, int check);
 t_node	*ft_allocate(void);
 int		ft_nodecmp(t_node *node, t_link *stack, int len);
-int		ft_issorted(t_link *stack);
+int		ft_issorted(t_link *stack, t_chunk chunk);
 
 void	stack_init(t_link *stack, char c);
 void	split_init(t_split *split, t_loc loc);
@@ -88,8 +88,14 @@ void	ft_rrr(t_link *stack_a, t_link *stack_b);
 void	ft_push(t_link *stack_from, t_link *stack_to);
 
 void	threeway_sort(t_link *stack_a, t_link *stack_b, t_chunk chunk);
+void	small_sort(t_link *a, t_chunk chunk);
+
 void	send_to(t_link *stack_a, t_link *stack_b, t_loc loc);
-void	send_from(t_link *a, t_link *b, t_loc loc, t_size size);
+void	send_from(t_link *a, t_link *b, t_loc from, t_size to);
+void	send_from_helper(t_link *a, t_link *b, t_loc from, t_size to);
+
+t_node	*get_comp(t_link *a, t_link *b, t_chunk chunk);
+void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk);
 
 void	top_a(t_link *a, t_link *b, t_loc loc);
 void	top_b(t_link *a, t_link *b, t_loc loc);

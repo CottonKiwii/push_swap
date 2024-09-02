@@ -6,11 +6,12 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 18:06:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/02 14:53:36 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:29:48 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
 
 void	set_count_reverse(t_link *stack, t_chunk chunk)
 {
@@ -69,101 +70,20 @@ void set_count(t_link *stack, t_chunk chunk)
 	}
 }
 
-void	send_from_helper(t_link *a, t_link *b, t_loc from, t_size to)
-{
-	if (from == BOTTOM_A)
-	{
-		if (to == MAX)
-			bottom_a(a, b, TOP_A);
-		else if (to == MID)
-			bottom_a(a, b, TOP_B);
-		else
-			bottom_a(a, b, BOTTOM_B);
-	}
-	else if (from == BOTTOM_B)
-	{
-		if (to == MAX)
-			bottom_b(a, b, TOP_A);
-		else if (to == MID)
-			bottom_b(a, b, BOTTOM_A);
-		else
-			bottom_b(a, b, TOP_B);
-	}
-}
-
-void	send_from(t_link *a, t_link *b, t_loc from, t_size to)
-{
-	if (from == TOP_A)
-	{
-		if (to == MAX)
-			top_a(a, b, BOTTOM_A);
-		else if (to == MID)
-			top_a(a, b, TOP_B);
-		else
-			top_a(a, b, BOTTOM_B);
-	}
-	else if (from == TOP_B)
-	{
-		if (to == MAX)
-			top_b(a, b, TOP_A);
-		else if (to == MID)
-			top_b(a, b, BOTTOM_A);
-		else
-			top_b(a, b, BOTTOM_B);
-	}
-	else
-		send_from_helper(a, b, from, to);
-}
-
-t_node	*get_comp(t_link *a, t_link *b, t_chunk chunk)
-{
-	if (chunk.loc == TOP_A)
-		return (a->first);
-	else if (chunk.loc == TOP_B)
-		return (b->first);
-	else if (chunk.loc == BOTTOM_A)
-		return (a->last);
-	else
-		return (b->last);
-}
-
-#include "ft_printf.h"
-void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk)
-{
-	t_node	*comp;
-	int		max;
-	int		mid;
-
-	mid = chunk.len / 3;
-	max = mid * 2;
-	split_init(split, chunk.loc);
-	while (chunk.len > 0)
-	{
-		comp = get_comp(a, b, chunk);
-		if (comp->procsd >= max)
-		{
-			split->max.len++;
-			send_from(a, b, chunk.loc, MAX);
-		}
-		else if (comp->procsd >= mid)
-		{
-			split->mid.len++;
-			send_from(a, b, chunk.loc, MID);
-		}
-		else
-	{
-			split->min.len++;
-			send_from(a, b, chunk.loc, MIN);
-		}
-		chunk.len--;
-	}
-}
-
 void	small_sort(t_link *a, t_chunk chunk)
 {
-	if (chunk.len == 1)
+	if (ft_issorted(a, chunk))
 		return ;
-	if (a->first->content > a->first->next->content)
+	if (chunk.len == 3)
+	{
+		if ((a->first->content > a->first->next->content)
+			&& (a->first->content > a->first->next->next->content))
+		{
+			ft_printf("ra\n");
+			ft_rotate(a);
+		}
+	}
+	if (!ft_issorted(a, chunk))
 	{
 		ft_printf("sa\n");
 		ft_swap(a);
@@ -173,7 +93,9 @@ void	small_sort(t_link *a, t_chunk chunk)
 void	update_loc(t_link *stack_a, t_link *stack_b, t_chunk *chunk)
 {
 	if (chunk->loc == BOTTOM_A && stack_a->len == chunk->len)
+	{
 		chunk->loc = TOP_A;
+	}
 	else if (chunk->loc == BOTTOM_B && stack_b->len == chunk->len)
 		chunk->loc = TOP_B;
 }
@@ -181,14 +103,20 @@ void	update_loc(t_link *stack_a, t_link *stack_b, t_chunk *chunk)
 void	threeway_sort(t_link *stack_a, t_link *stack_b, t_chunk chunk)
 {
 	t_split	split;
+	int		len;
 
+	len = chunk.len;
 	update_loc(stack_a, stack_b, &chunk);
-	if (chunk.len == 1 || chunk.len == 2)
+	if (chunk.len <= 3)
 	{
 		if (chunk.loc != TOP_A)
-			send_from(stack_a, stack_b, chunk.loc, MAX);
-		if (chunk.loc != TOP_A && chunk.len == 2)
-			send_from(stack_a, stack_b, chunk.loc, MAX);
+		{
+			while (len > 0)
+			{
+				send_from(stack_a, stack_b, chunk.loc, MAX);
+				len--;
+			}
+		}
 		small_sort(stack_a, chunk);
 		return ;
 	}
