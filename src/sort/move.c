@@ -6,93 +6,100 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:52:24 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/31 18:32:00 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/03 17:33:21 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
 
-void	top_a(t_link *a, t_link *b, t_loc loc)	
+void	top_a(t_link *a, t_link *b, t_loc loc, t_out *out)	
 {	
 	if (loc == BOTTOM_A)
 	{
-		ft_printf("ra\n");
+		out->next = handle_output("ra");
 		ft_rotate(a);
 	}
 	else if (loc == TOP_B)
 	{
-		ft_printf("pb\n");
+		out->next = handle_output("pb");
 		ft_push(a, b);
 	}
 	else if (loc == BOTTOM_B)
 	{
-		ft_printf("pb\nrb\n");
+		out->next = handle_output("pb");
+		out->next = handle_output("rb");
 		ft_push(a, b);
 		ft_rotate(b);
 	}
-}
+"}
 
-void	top_b(t_link *a, t_link *b, t_loc loc)
+void	top_b(t_link *a, t_link *b, t_loc loc, t_out *out)
 {
 	if (loc == TOP_A)
 	{
-		ft_printf("pa\n");
+		handle_output(out, "pa");
 		ft_push(b, a);
 	}
 	else if (loc == BOTTOM_A)
 	{
-		ft_printf("pa\nra\n");
+		handle_output(out, "pa");
+		handle_output(out, "ra");
 		ft_push(b, a);
 		ft_rotate(a);
 	}
 	else if (loc == BOTTOM_B)
 	{
-		ft_printf("rb\n");
+		handle_output(out, "rb");
 		ft_rotate(b);
 	}
 }
 
-void	bottom_a(t_link *a, t_link *b, t_loc loc)
+void	bottom_a(t_link *a, t_link *b, t_loc loc, t_out *out)
 {
 	if (loc == TOP_A)
 	{
-		ft_printf("rra\n");
+		handle_output(out, "rra");
 		ft_reverse_rotate(a);
 	}
 	else if (loc == TOP_B)
 	{
-		ft_printf("rra\npb\n");
+		handle_output(out, "rra");
+		handle_output(out, "pb");
 		ft_reverse_rotate(a);
 		ft_push(a, b);
 	}
 	else if (loc == BOTTOM_B)
 	{
-		ft_printf("rra\npb\nrb\n");
+		handle_output(out, "rra");
+		handle_output(out, "pb");
+		handle_output(out, "rb");
 		ft_reverse_rotate(a);
 		ft_push(a, b);
 		ft_rotate(b);
 	}
 }
 
-void	bottom_b(t_link *a, t_link *b, t_loc loc)
+void	bottom_b(t_link *a, t_link *b, t_loc loc, t_out *out)
 {
 	if (loc == TOP_A)
 	{
-		ft_printf("rrb\npa\n");
+		handle_output(out, "rrb");
+		handle_output(out, "pa");
 		ft_reverse_rotate(b);
 		ft_push(b, a);
 	}
 	else if (loc == BOTTOM_A)
 	{
-		ft_printf("rrb\npa\nra\n");
+		handle_output(out, "rrb");
+		handle_output(out, "pa");
+		handle_output(out, "ra");
 		ft_reverse_rotate(b);
 		ft_push(b, a);
 		ft_rotate(a);
 	}
 	else if (loc == TOP_B)
 	{
-		ft_printf("rrb\n");
+		handle_output(out, "rrb");
 		ft_reverse_rotate(b);
 	}
 }

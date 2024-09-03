@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/03 14:39:16 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/03 17:29:48 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int		ft_issorted(t_link *stack, t_chunk chunk);
 void	stack_init(t_link *stack, char c);
 void	split_init(t_split *split, t_loc loc);
 void	split_init_helper(t_split *split);
+void	output_init(t_out *out);
 
 t_link	*stack_feed(t_link *stack, int ac, char **av);
 int		set_stack(t_link *stack, char **str);
@@ -93,20 +94,19 @@ void	ft_reverse_rotate(t_link *stack);
 void	ft_rrr(t_link *a, t_link *b);
 void	ft_push(t_link *stack_from, t_link *stack_to);
 
-void	threeway_sort(t_link *a, t_link *b, t_chunk chunk);
-void	small_sort(t_link *a, t_link *b, t_chunk chunk);
-void	sort_three(t_link *a, t_link *b, t_chunk chunk);
+void	threeway_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out);
+void	small_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out);
 
-void	send_to(t_link *a, t_link *b, t_loc loc);
-void	send_from(t_link *a, t_link *b, t_loc from, t_size to);
-void	send_from_helper(t_link *a, t_link *b, t_loc from, t_size to);
+void	send_from(t_link *a, t_link *b, t_loc from, t_size to, t_out *out);
+void	send_from_helper(t_link *a, t_link *b, t_loc from, t_size to, t_out *out);
 
 t_node	*get_comp(t_link *a, t_link *b, t_chunk chunk);
-void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk);
+void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk, t_out *out);
+t_out	*handle_output( char *str);
 
-void	top_a(t_link *a, t_link *b, t_loc loc);
-void	top_b(t_link *a, t_link *b, t_loc loc);
-void	bottom_a(t_link *a, t_link *b, t_loc loc);
-void	bottom_b(t_link *a, t_link *b, t_loc loc);
+void	top_a(t_link *a, t_link *b, t_loc loc, t_out *out);
+void	top_b(t_link *a, t_link *b, t_loc loc, t_out *out);
+void	bottom_a(t_link *a, t_link *b, t_loc loc, t_out *out);
+void	bottom_b(t_link *a, t_link *b, t_loc loc, t_out *out);
 
 #endif

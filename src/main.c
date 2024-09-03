@@ -6,12 +6,11 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/03 14:43:04 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/03 17:27:43 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
 
 int	main(int ac, char **av)
 {
@@ -28,7 +27,7 @@ int	main(int ac, char **av)
 	output_init(&out);
 	chunk.len = a.len;
 	chunk.loc = TOP_A;
-	threeway_sort(&a, &b, chunk);
+	threeway_sort(&a, &b, chunk, &out);
 	ft_exit(&a, SUCC);
 }
 

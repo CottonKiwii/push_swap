@@ -6,14 +6,11 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 18:06:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/03 14:50:05 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/03 17:30:57 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
-
-void	handle_output(t_out	*out, char *str)	
 
 void	set_count_reverse(t_link *stack, t_chunk chunk)
 {
@@ -72,19 +69,19 @@ void set_count(t_link *stack, t_chunk chunk)
 	}
 }
 
-void	small_sort(t_link *a, t_link *b, t_chunk chunk)
+void	small_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out)
 {
 	int len;
 
 	len = chunk.len;
 	while (len > 0)
 	{
-		send_from(a, b, chunk.loc, MAX);
+		send_from(a, b, chunk.loc, MAX, out);
 		len--;
 	}
 	if (!ft_issorted(a, chunk))
 	{
-		ft_printf("sa\n");
+		out = handle_output("sa");
 		ft_swap(a);
 	}
 }
@@ -99,7 +96,7 @@ void	update_loc(t_link *stack_a, t_link *stack_b, t_chunk *chunk)
 		chunk->loc = TOP_B;
 }
 
-void	threeway_sort(t_link *a, t_link *b, t_chunk chunk)
+void	threeway_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out)
 {
 	t_split	split;
 	int		len;
@@ -108,15 +105,15 @@ void	threeway_sort(t_link *a, t_link *b, t_chunk chunk)
 	update_loc(a, b, &chunk);
 	if (chunk.len <= 2)
 	{
-		small_sort(a, b, chunk);
+		small_sort(a, b, chunk, out);
 		return ;
 	}
 	if (chunk.loc == TOP_A || chunk.loc == BOTTOM_A)
 		set_count(a, chunk);
 	else
 		set_count(b, chunk);
-	split_chunk(a, b, &split, chunk);
-	threeway_sort(a, b, split.max);
-	threeway_sort(a, b, split.mid);
-	threeway_sort(a, b, split.min);
+	split_chunk(a, b, &split, chunk, out);
+	threeway_sort(a, b, split.max, out);
+	threeway_sort(a, b, split.mid, out);
+	threeway_sort(a, b, split.min, out);
 }

@@ -6,56 +6,56 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:49:13 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/02 17:04:15 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/03 17:31:18 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	send_from_helper(t_link *a, t_link *b, t_loc from, t_size to)
+void	send_from_helper(t_link *a, t_link *b, t_loc from, t_size to, t_out *out)
 {
 	if (from == BOTTOM_A)
 	{
 		if (to == MAX)
-			bottom_a(a, b, TOP_A);
+			bottom_a(a, b, TOP_A, out);
 		else if (to == MID)
-			bottom_a(a, b, TOP_B);
+			bottom_a(a, b, TOP_B, out);
 		else
-			bottom_a(a, b, BOTTOM_B);
+			bottom_a(a, b, BOTTOM_B, out);
 	}
 	else if (from == BOTTOM_B)
 	{
 		if (to == MAX)
-			bottom_b(a, b, TOP_A);
+			bottom_b(a, b, TOP_A, out);
 		else if (to == MID)
-			bottom_b(a, b, BOTTOM_A);
+			bottom_b(a, b, BOTTOM_A, out);
 		else
-			bottom_b(a, b, TOP_B);
+			bottom_b(a, b, TOP_B, out);
 	}
 }
 
-void	send_from(t_link *a, t_link *b, t_loc from, t_size to)
+void	send_from(t_link *a, t_link *b, t_loc from, t_size to, t_out *out)
 {
 	if (from == TOP_A)
 	{
 		if (to == MAX)
-			top_a(a, b, BOTTOM_A);
+			top_a(a, b, BOTTOM_A, out);
 		else if (to == MID)
-			top_a(a, b, TOP_B);
+			top_a(a, b, TOP_B, out);
 		else
-			top_a(a, b, BOTTOM_B);
+			top_a(a, b, BOTTOM_B, out);
 	}
 	else if (from == TOP_B)
 	{
 		if (to == MAX)
-			top_b(a, b, TOP_A);
+			top_b(a, b, TOP_A, out);
 		else if (to == MID)
-			top_b(a, b, BOTTOM_A);
+			top_b(a, b, BOTTOM_A, out);
 		else
-			top_b(a, b, BOTTOM_B);
+			top_b(a, b, BOTTOM_B, out);
 	}
 	else
-		send_from_helper(a, b, from, to);
+		send_from_helper(a, b, from, to, out);
 }
 
 t_node	*get_comp(t_link *a, t_link *b, t_chunk chunk)
@@ -70,7 +70,7 @@ t_node	*get_comp(t_link *a, t_link *b, t_chunk chunk)
 		return (b->last);
 }
 
-void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk)
+void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk, t_out *out)
 {
 	t_node	*comp;
 	int		max;
@@ -85,17 +85,17 @@ void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk)
 		if (comp->procsd >= max)
 		{
 			split->max.len++;
-			send_from(a, b, chunk.loc, MAX);
+			send_from(a, b, chunk.loc, MAX, out);
 		}
 		else if (comp->procsd >= mid)
 		{
 			split->mid.len++;
-			send_from(a, b, chunk.loc, MID);
+			send_from(a, b, chunk.loc, MID, out);
 		}
 		else
 	{
 			split->min.len++;
-			send_from(a, b, chunk.loc, MIN);
+			send_from(a, b, chunk.loc, MIN, out);
 		}
 		chunk.len--;
 	}

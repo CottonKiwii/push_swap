@@ -6,11 +6,12 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 12:19:53 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/03 14:47:21 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/03 17:23:50 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft.h"
 
 void	stack_init(t_link *stack, char c)
 {
@@ -22,6 +23,9 @@ void	stack_init(t_link *stack, char c)
 
 void	output_init(t_out *out)
 {
+	out = (t_out *)ft_calloc(1, sizeof(t_out));
+	if (!out)
+		return ;
 	out->op = NULL;
 	out->next = NULL;
 }
