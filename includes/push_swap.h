@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/02 17:11:58 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:39:16 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ typedef struct s_link
 	char			name;
 	int				len;
 }	t_link;
+
+typedef struct s_out
+{
+	char			*op;
+	struct s_out	*next;
+}	t_out;
 
 typedef enum e_loc
 {
@@ -80,17 +86,18 @@ int		set_content(t_link *stack, char **str);
 void	tester(t_link *stack);
 
 void	ft_swap(t_link *stack);
-void	ft_ss(t_link *stack_a, t_link *stack_b);
+void	ft_ss(t_link *a, t_link *b);
 void	ft_rotate(t_link *stack);
-void	ft_rr(t_link *stack_a, t_link *stack_b);
+void	ft_rr(t_link *a, t_link *b);
 void	ft_reverse_rotate(t_link *stack);
-void	ft_rrr(t_link *stack_a, t_link *stack_b);
+void	ft_rrr(t_link *a, t_link *b);
 void	ft_push(t_link *stack_from, t_link *stack_to);
 
-void	threeway_sort(t_link *stack_a, t_link *stack_b, t_chunk chunk);
-void	small_sort(t_link *a, t_chunk chunk);
+void	threeway_sort(t_link *a, t_link *b, t_chunk chunk);
+void	small_sort(t_link *a, t_link *b, t_chunk chunk);
+void	sort_three(t_link *a, t_link *b, t_chunk chunk);
 
-void	send_to(t_link *stack_a, t_link *stack_b, t_loc loc);
+void	send_to(t_link *a, t_link *b, t_loc loc);
 void	send_from(t_link *a, t_link *b, t_loc from, t_size to);
 void	send_from_helper(t_link *a, t_link *b, t_loc from, t_size to);
 

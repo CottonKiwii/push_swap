@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 12:19:53 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/08/31 18:30:32 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:47:21 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ void	stack_init(t_link *stack, char c)
 	stack->len = 0;
 	stack->first = NULL;
 	stack->last = NULL;
+}
+
+void	output_init(t_out *out)
+{
+	out->op = NULL;
+	out->next = NULL;
 }
 
 void	split_init_helper(t_split *split)
