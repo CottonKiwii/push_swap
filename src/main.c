@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/03 17:27:43 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:52:39 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	main(int ac, char **av)
 	output_init(&out);
 	chunk.len = a.len;
 	chunk.loc = TOP_A;
-	threeway_sort(&a, &b, chunk, &out);
+	if (!ft_issorted(&a, chunk))
+		threeway_sort(&a, &b, chunk, &out);
+	merge_output(&out);
 	ft_exit(&a, SUCC);
 }
 

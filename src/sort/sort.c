@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 18:06:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/03 17:30:57 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:13:32 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ void	small_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out)
 	int len;
 
 	len = chunk.len;
-	while (len > 0)
+	while (len > 0 && chunk.loc != TOP_A)
 	{
 		send_from(a, b, chunk.loc, MAX, out);
 		len--;
 	}
 	if (!ft_issorted(a, chunk))
 	{
-		out = handle_output("sa");
+		handle_output(out, SA);
 		ft_swap(a);
 	}
 }
@@ -89,9 +89,7 @@ void	small_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out)
 void	update_loc(t_link *stack_a, t_link *stack_b, t_chunk *chunk)
 {
 	if (chunk->loc == BOTTOM_A && stack_a->len == chunk->len)
-	{
 		chunk->loc = TOP_A;
-	}
 	else if (chunk->loc == BOTTOM_B && stack_b->len == chunk->len)
 		chunk->loc = TOP_B;
 }

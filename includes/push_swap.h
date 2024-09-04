@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/03 17:29:48 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:10:10 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ typedef struct s_link
 
 typedef struct s_out
 {
-	char			*op;
+	int				op;
 	struct s_out	*next;
+	struct s_out	*first;	
 }	t_out;
 
 typedef enum e_loc
@@ -52,6 +53,22 @@ typedef enum e_size
 	MID,
 	MAX
 }	t_size;
+
+typedef enum e_op
+{
+	PA,
+	PB,
+	SA,
+	SB,
+	SS,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR,
+	TEST
+}	t_op;
 
 typedef struct s_chunk
 {
@@ -84,7 +101,7 @@ t_link	*stack_feed(t_link *stack, int ac, char **av);
 int		set_stack(t_link *stack, char **str);
 int		set_content(t_link *stack, char **str);
 
-void	tester(t_link *stack);
+void	tester(t_out *out);
 
 void	ft_swap(t_link *stack);
 void	ft_ss(t_link *a, t_link *b);
@@ -101,8 +118,11 @@ void	send_from(t_link *a, t_link *b, t_loc from, t_size to, t_out *out);
 void	send_from_helper(t_link *a, t_link *b, t_loc from, t_size to, t_out *out);
 
 t_node	*get_comp(t_link *a, t_link *b, t_chunk chunk);
-void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk, t_out *out);
-t_out	*handle_output( char *str);
+void	split_chunk(t_link *a, t_link *b, t_split *splt, t_chunk chnk, t_out *out);
+
+void	handle_output(t_out *out, int op);
+void	merge_output(t_out *out);
+void	print_output(int op);
 
 void	top_a(t_link *a, t_link *b, t_loc loc, t_out *out);
 void	top_b(t_link *a, t_link *b, t_loc loc, t_out *out);
