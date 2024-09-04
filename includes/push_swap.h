@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/04 16:10:10 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:07:39 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,9 @@ void	ft_push(t_link *stack_from, t_link *stack_to);
 
 void	threeway_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out);
 void	small_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out);
+void	sort_five(t_link *a, t_link *b, t_out *out);
+void	sort_three(t_link *a, t_out *out);
+void	push_sort(t_link *a, t_link *b, int size, t_out *out);
 
 void	send_from(t_link *a, t_link *b, t_loc from, t_size to, t_out *out);
 void	send_from_helper(t_link *a, t_link *b, t_loc from, t_size to, t_out *out);

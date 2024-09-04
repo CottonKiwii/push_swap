@@ -6,16 +6,19 @@ chores
 [x] Makefile
 [x] No global variables
 [x] Program name: push_swap
-[ ] 100 numbers in less than 700 ops
-[ ] 500 numbers in less than 5500 ops
+[ ] Norm and Cleanup
+[ ] 3 numbers in two ops
+[ ] 5 numbers in less than 12 ops
+[X] 100 numbers in less than 700 ops
+[X] 500 numbers in less than 5500 ops
 
 coding
 ------
 [x] 2 stacks (a and b), a having inputted numbers, b being empty
-[ ] Instructions must be separated by a \n
+[X] Instructions must be separated by a \n
 [x] If no input, then display nothing
-[ ] If error, then "Error\n" on STD_ERR
-[ ] Function that checks, if stack is sorted
+[X] If error, then "Error\n" on STD_ERR
+[X] Function that checks, if stack is sorted
 
 sorting algorithm (check subject)
 ------

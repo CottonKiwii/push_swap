@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 18:06:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/04 16:13:32 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:24:20 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,23 +66,6 @@ void set_count(t_link *stack, t_chunk chunk)
 		}
 		comp = comp->next;
 		chunk.len--;
-	}
-}
-
-void	small_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out)
-{
-	int len;
-
-	len = chunk.len;
-	while (len > 0 && chunk.loc != TOP_A)
-	{
-		send_from(a, b, chunk.loc, MAX, out);
-		len--;
-	}
-	if (!ft_issorted(a, chunk))
-	{
-		handle_output(out, SA);
-		ft_swap(a);
 	}
 }
 
