@@ -6,7 +6,7 @@
 #    By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 10:42:42 by jwolfram          #+#    #+#              #
-#    Updated: 2024/09/04 17:07:58 by jwolfram         ###   ########.fr        #
+#    Updated: 2024/09/05 17:42:44 by jwolfram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRCS_FILES := main \
 			  operations/push \
 			  utils/utils \
 			  utils/init \
+			  utils/free \
 
 SRCS := ${SRCS_FILES:%=${SRCS_DIR}/%.c}
 

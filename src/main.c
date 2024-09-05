@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/05 16:10:42 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:55:59 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 			threeway_sort(&a, &b, chunk, &out);
 	}
 	merge_output(&out);
-	ft_exit(&a, SUCC);
+	ft_end(&a, &b, &out, SUCC);
 }
 
 /*#include "ft_printf.h"

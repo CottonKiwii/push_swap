@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:23:52 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/05 16:48:50 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:58:12 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	small_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out)
 	}
 	if (!ft_issorted(a, chunk.len))
 	{
-		handle_output(out, SA);
+		handle_output(a, b, out, SA);
 		ft_swap(a);
 	}
 }
@@ -33,22 +33,22 @@ void	push_sort(t_link *a, t_link *b, int pos, t_out *out)
 {
 	if (pos == 1)
 	{
-		handle_output(out, PA);
+		handle_output(a, b,out, PA);
 		ft_push(b, a);
 	}
 	else if (pos == 2)
 	{
-		handle_output(out, PA);
-		handle_output(out, SA);
+		handle_output(a, b, out, PA);
+		handle_output(a, b, out, SA);
 		ft_push(b, a);
 		ft_swap(a);
 	}
 	else if (pos == 3)
 	{
-		handle_output(out, RA);
-		handle_output(out, PA);
-		handle_output(out, SA);
-		handle_output(out, RRA);
+		handle_output(a, b, out, RA);
+		handle_output(a, b, out, PA);
+		handle_output(a, b, out, SA);
+		handle_output(a, b, out, RRA);
 		ft_rotate(a);
 		ft_push(b, a);
 		ft_swap(a);
@@ -56,10 +56,10 @@ void	push_sort(t_link *a, t_link *b, int pos, t_out *out)
 	}
 	else if (pos == 4)
 	{
-		handle_output(out, RRA);
-		handle_output(out, PA);
-		handle_output(out, RA);
-		handle_output(out, RA);
+		handle_output(a, b, out, RRA);
+		handle_output(a, b, out, PA);
+		handle_output(a, b, out, RA);
+		handle_output(a, b, out, RA);
 		ft_reverse_rotate(a);
 		ft_push(b, a);
 		ft_rotate(a);
@@ -67,8 +67,8 @@ void	push_sort(t_link *a, t_link *b, int pos, t_out *out)
 	}
 	else if (pos == 5)
 	{
-		handle_output(out, PA);
-		handle_output(out, RA);
+		handle_output(a, b, out, PA);
+		handle_output(a, b, out, RA);
 		ft_push(b, a);
 		ft_rotate(a);
 	}
@@ -85,35 +85,34 @@ int	ismax(t_link *a)
 	return (2);
 }
 
-#include "ft_printf.h"
-void	sort_three(t_link *a, t_out *out)
+void	sort_three(t_link *a, t_link *b, t_out *out)
 {
 	int	max_pos;
 
 	max_pos = ismax(a);
 	if (max_pos == 1)
 	{
-		handle_output(out, RA);
+		handle_output(a, b, out, RA);
 		ft_rotate(a);
 	}
 	else if (max_pos == 2)
 	{
 		if (a->first->content > a->last->content)
 		{
-			handle_output(out, RRA);
+			handle_output(a, b, out, RRA);
 			ft_reverse_rotate(a);
 		}
 		else
 		{
-			handle_output(out, SA);
+			handle_output(a, b, out, SA);
 			ft_swap(a);
-			handle_output(out, RA);
+			handle_output(a, b, out, RA);
 			ft_rotate(a);
 		}
 	}
 	if (a->first->content > a->first->next->content)
 	{
-		handle_output(out, SA);
+		handle_output(a, b, out, SA);
 		ft_swap(a);
 	}
 }
@@ -127,11 +126,11 @@ void	sort_five(t_link *a, t_link *b, t_out *out)
 	len = a->len;
 	while (a->len > 3)
 	{
-		handle_output(out, PB);
+		handle_output(a, b, out, PB);
 		ft_push(a, b);
 	}
 	if (!ft_issorted(a, 3))
-		sort_three(a, out);
+		sort_three(a, b, out);
 	while (b->first)
 	{
 		pos = 1;

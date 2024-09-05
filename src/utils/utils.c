@@ -6,47 +6,12 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 19:35:09 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/05 16:10:20 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:26:18 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
-
-void	ft_exit(t_link *stack, int i)
-{
-	t_node	*cur;
-	t_node	*temp;
-
-	cur = stack->first;
-	while (cur)
-	{
-		temp = cur->next;
-		free(cur);
-		cur = temp;
-	}
-	if (i == ERR)
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
-	exit(0);
-}
-
-void	ft_free(char **str, int check)
-{
-	int	i;
-
-	i = 0;
-	if (!str || !check)
-		return ;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}
 
 t_node	*ft_allocate(void)
 {

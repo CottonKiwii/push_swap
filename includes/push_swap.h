@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/05 16:11:04 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:58:00 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,14 @@ typedef struct s_split
 # define ERR 0
 # define SUCC 1
 
-void	ft_exit(t_link *stack, int i);
-void	ft_free(char **str, int check);
 t_node	*ft_allocate(void);
 int		ft_nodecmp(t_node *node, t_link *stack, int len);
 int		ft_issorted(t_link *stack, int len);
+
+void	ft_exit(t_link *stack, int i);
+void	ft_free(char **str, int check);
+void	ft_free_out(t_out *out);
+void	ft_end(t_link *a, t_link *b, t_out *out, int i);
 
 void	stack_init(t_link *stack, char c);
 void	split_init(t_split *split, t_loc loc);
@@ -114,7 +117,7 @@ void	ft_push(t_link *stack_from, t_link *stack_to);
 void	threeway_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out);
 void	small_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out);
 void	sort_five(t_link *a, t_link *b, t_out *out);
-void	sort_three(t_link *a, t_out *out);
+void	sort_three(t_link *a, t_link *b, t_out *out);
 void	push_sort(t_link *a, t_link *b, int size, t_out *out);
 
 void	send_from(t_link *a, t_link *b, t_loc from, t_size to, t_out *out);
@@ -123,7 +126,7 @@ void	send_from_helper(t_link *a, t_link *b, t_loc from, t_size to, t_out *out);
 t_node	*get_comp(t_link *a, t_link *b, t_chunk chunk);
 void	split_chunk(t_link *a, t_link *b, t_split *splt, t_chunk chnk, t_out *out);
 
-void	handle_output(t_out *out, int op);
+void	handle_output(t_link *a, t_link *b, t_out *out, int op);
 void	merge_output(t_out *out);
 void	print_output(int op);
 

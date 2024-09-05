@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:35:57 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/05 16:21:27 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:56:37 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	print_output(int op)
 		ft_printf("hello from test\n");
 }
 
-void	handle_output(t_out *out, int op)	
+void	handle_output(t_link *a, t_link *b, t_out *out, int op)	
 {
 	t_out	*node;
 	t_out	*cur;
@@ -54,7 +54,7 @@ void	handle_output(t_out *out, int op)
 	}
 	node = (t_out *)ft_calloc(1, sizeof(t_out));
 	if (!node)
-		return ; /* CHANGE TO FT_END!!!! */
+		ft_end(a, b, out, ERR);
 	node->first = out->first;
 	node->next = NULL;
 	node->op = op;
