@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 19:35:09 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/03 17:23:48 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/05 16:10:20 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,11 @@ int	ft_nodecmp(t_node *node, t_link *stack, int len)
 	return (SUCC);
 }
 
-int	ft_issorted(t_link *stack, t_chunk chunk)
+int	ft_issorted(t_link *stack, int len)
 {
 	t_node	*cur;
 	t_node	*next;
-	int		len;
 
-	len = chunk.len;
 	cur = stack->first;
 	if (!stack->first->next)
 		return (SUCC);

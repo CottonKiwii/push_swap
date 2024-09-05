@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/04 17:10:41 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/05 16:10:42 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 	output_init(&out);
 	chunk.len = a.len;
 	chunk.loc = TOP_A;
-	if (!ft_issorted(&a, chunk))
+	if (!ft_issorted(&a, chunk.len))
 	{
 		if (a.len <= 5)
 			sort_five(&a, &b, &out);
