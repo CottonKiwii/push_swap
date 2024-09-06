@@ -6,13 +6,13 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:49:13 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/03 17:31:18 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:35:52 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	send_from_helper(t_link *a, t_link *b, t_loc from, t_size to, t_out *out)
+void	send_bottom(t_link *a, t_link *b, t_loc from, t_size to, t_out *out)
 {
 	if (from == BOTTOM_A)
 	{

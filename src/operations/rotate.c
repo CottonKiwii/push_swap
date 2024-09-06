@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/06 11:57:25 by jwolfram          #+#    #+#             */
+/*   Updated: 2024/09/06 12:17:33 by jwolfram         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -18,10 +29,10 @@ void	ft_rotate(t_link *stack)
 	stack->last = first;
 }
 
-void	ft_rr(t_link *stack_a, t_link *stack_b)
+void	ft_rr(t_link *a, t_link *b)
 {
-	ft_rotate(stack_a);
-	ft_rotate(stack_b);
+	ft_rotate(a);
+	ft_rotate(b);
 }
 
 void	ft_reverse_rotate(t_link *stack)
@@ -41,8 +52,8 @@ void	ft_reverse_rotate(t_link *stack)
 	stack->first = last;
 }
 
-void	ft_rrr(t_link *stack_a, t_link *stack_b)
+void	ft_rrr(t_link *a, t_link *b)
 {
-	ft_reverse_rotate(stack_a);
-	ft_reverse_rotate(stack_b);
+	ft_reverse_rotate(a);
+	ft_reverse_rotate(b);
 }

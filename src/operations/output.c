@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:35:57 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/05 17:56:37 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:15:03 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ void	print_output(int op)
 		ft_printf("pa\n");
 	else if (op == PB)
 		ft_printf("pb\n");
-	else if (op == TEST)
-		ft_printf("hello from test\n");
 }
 
-void	handle_output(t_link *a, t_link *b, t_out *out, int op)	
+void	handle_output(t_link *a, t_link *b, t_out *out, int op)
 {
 	t_out	*node;
 	t_out	*cur;
@@ -77,7 +75,7 @@ void	merge_output(t_out *out)
 		if ((cur->op == RA && cur->next->op == RB)
 			|| (cur->op == RB && cur->next->op == RA))
 			ft_printf("rr\n");
-		else if ((cur->op == RRA && cur->next->op == RRB) 
+		else if ((cur->op == RRA && cur->next->op == RRB)
 			|| (cur->op == RRB && cur->next->op == RRA))
 			ft_printf("rrr\n");
 		else if ((cur->op == SA && cur->next->op == SB)

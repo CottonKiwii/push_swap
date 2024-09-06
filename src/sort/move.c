@@ -6,14 +6,14 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:52:24 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/05 17:49:50 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:34:46 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	top_a(t_link *a, t_link *b, t_loc loc, t_out *out)	
-{	
+void	top_a(t_link *a, t_link *b, t_loc loc, t_out *out)
+{
 	if (loc == BOTTOM_A)
 	{
 		handle_output(a, b, out, RA);
