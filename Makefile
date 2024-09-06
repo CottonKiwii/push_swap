@@ -6,7 +6,7 @@
 #    By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 10:42:42 by jwolfram          #+#    #+#              #
-#    Updated: 2024/09/06 15:15:46 by jwolfram         ###   ########.fr        #
+#    Updated: 2024/09/06 15:20:52 by jwolfram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ SRCS_DIR := src
 
 SRCS_FILES := main \
 			  stack \
-			  tester \
 			  sort/sort \
 			  sort/send \
 			  sort/move \

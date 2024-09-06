@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/06 15:04:24 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:21:16 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ typedef struct s_link
 }	t_link;
 
 /* ------FILES------ */
-void	tester(t_out *out);
 int		set_content(t_link *stack, char **str);
 int		set_stack(t_link *stack, char **str);
 t_link	*stack_feed(t_link *stack, int ac, char **av);
