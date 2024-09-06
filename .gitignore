@@ -4,4 +4,5 @@ imgui.ini
 %.o
 obj/
 checker_linux
+libft/libft.a
 .clangd
