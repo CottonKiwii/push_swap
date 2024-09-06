@@ -6,12 +6,11 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 17:25:22 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/05 18:20:45 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:14:10 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	ft_free(char **str, int check)
 {
@@ -73,5 +72,5 @@ void	ft_end(t_link *a, t_link *b, t_out *out, int i)
 		ft_free_out(out);
 	if (b->first)
 		ft_free_stack(b);
-	ft_exit( a, i);
+	ft_exit(a, i);
 }

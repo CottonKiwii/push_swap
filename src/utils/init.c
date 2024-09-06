@@ -6,18 +6,19 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 12:19:53 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/04 15:44:58 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:10:14 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_init(t_link *stack, char c)
+void	stack_init(t_link *stack, t_out *out, char c)
 {
 	stack->name = c;
 	stack->len = 0;
 	stack->first = NULL;
 	stack->last = NULL;
+	stack->out = out;
 }
 
 void	output_init(t_out *out)
@@ -27,7 +28,7 @@ void	output_init(t_out *out)
 	out->first = out;
 }
 
-void	split_init_helper(t_split *split)
+void	split_init_len(t_split *split)
 {
 	split->max.len = 0;
 	split->mid.len = 0;
@@ -60,5 +61,5 @@ void	split_init(t_split *split, t_loc loc)
 		split->mid.loc = BOTTOM_A;
 		split->min.loc = TOP_B;
 	}
-	split_init_helper(split);
+	split_init_len(split);
 }

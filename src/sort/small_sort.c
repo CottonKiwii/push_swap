@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:23:52 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/06 12:33:43 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:26:23 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	small_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out)
 	len = chunk.len;
 	while (len > 0 && chunk.loc != TOP_A)
 	{
-		send_from(a, b, chunk.loc, MAX, out);
+		send_from(a, b, chunk.loc, MAX);
 		len--;
 	}
 	if (!ft_issorted(a, chunk.len))

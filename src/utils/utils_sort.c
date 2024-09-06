@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:30:38 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/06 12:31:12 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:12:57 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,12 @@ void	ft_two(t_link *a, t_link *b, t_out *out)
 		ft_reverse_rotate(a);
 	}
 	else
-{
+	{
 		handle_output(a, b, out, SA);
 		ft_swap(a);
 		handle_output(a, b, out, RA);
 		ft_rotate(a);
 	}
-
 }
 
 void	ft_three_four(t_link *a, t_link *b, int pos, t_out *out)

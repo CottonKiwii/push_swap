@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:40:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/05 17:55:59 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:19:24 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int	main(int ac, char **av)
 
 	if (ac <= 1)
 		return (ERR);
-	stack_init(&a, 'a');
-	stack_init(&b, 'b');
-	stack_feed(&a, ac, av);
 	output_init(&out);
+	stack_init(&a, &out, 'a');
+	stack_init(&b, &out, 'b');
+	stack_feed(&a, ac, av);
 	chunk.len = a.len;
 	chunk.loc = TOP_A;
 	if (!ft_issorted(&a, chunk.len))

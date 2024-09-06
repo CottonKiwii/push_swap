@@ -6,7 +6,7 @@
 /*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:17:56 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/06 12:19:02 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:04:24 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,7 @@
 # define ERR 0
 # define SUCC 1
 
-
-/* ------STACKS------ */
-
-typedef struct s_node
-{
-	int				content;
-	int				procsd;
-	struct s_node	*next;
-	struct s_node	*prev;
-}	t_node;
-
-typedef struct s_link
-{
-	t_node			*first;
-	t_node			*last;
-	char			name;
-	int				len;
-}	t_link;
- 
 /* ------SORTING------ */
-
 typedef enum e_loc
 {
 	TOP_A,
@@ -67,8 +47,7 @@ typedef struct s_split
 	t_chunk			min;
 }	t_split;
 
-/* ------OPERATIONS------ */ 
-
+/* ------OPERATIONS------ */
 typedef struct s_out
 {
 	int				op;
@@ -91,7 +70,29 @@ typedef enum e_op
 	RRR,
 }	t_op;
 
+/* ------STACKS------ */
+typedef struct s_node
+{
+	int				content;
+	int				procsd;
+	struct s_node	*next;
+	struct s_node	*prev;
+}	t_node;
+
+typedef struct s_link
+{
+	t_node			*first;
+	t_node			*last;
+	char			name;
+	int				len;
+	t_out			*out;
+}	t_link;
+
 /* ------FILES------ */
+void	tester(t_out *out);
+int		set_content(t_link *stack, char **str);
+int		set_stack(t_link *stack, char **str);
+t_link	*stack_feed(t_link *stack, int ac, char **av);
 
 /* OPERATIONS */
 void	print_output(int op);
@@ -107,43 +108,37 @@ void	ft_reverse_rotate(t_link *stack);
 void	ft_rrr(t_link *a, t_link *b);
 
 /* SORT */
-t_node	*ft_allocate(void);
-int		ft_nodecmp(t_node *node, t_link *stack, int len);
-int		ft_issorted(t_link *stack, int len);
-
-void	ft_exit(t_link *stack, int i);
-void	ft_free(char **str, int check);
-void	ft_free_out(t_out *out);
-void	ft_end(t_link *a, t_link *b, t_out *out, int i);
-
-void	stack_init(t_link *stack, char c);
-void	split_init(t_split *split, t_loc loc);
-void	split_init_helper(t_split *split);
-void	output_init(t_out *out);
-
-t_link	*stack_feed(t_link *stack, int ac, char **av);
-int		set_stack(t_link *stack, char **str);
-int		set_content(t_link *stack, char **str);
-
-void	tester(t_out *out);
-
-
+void	find_count(t_node *cur, t_node *comp, int len, int i);	
+void	set_count_reverse(t_link *stack, t_chunk chunk);
+void	set_count(t_link *stack, t_chunk chunk);
+void	update_loc(t_link *a, t_link *b, t_chunk *chunk);
 void	threeway_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out);
 void	small_sort(t_link *a, t_link *b, t_chunk chunk, t_out *out);
-void	sort_five(t_link *a, t_link *b, t_out *out);
 void	sort_three(t_link *a, t_link *b, t_out *out);
-void	push_sort(t_link *a, t_link *b, int size, t_out *out);
-
-void	send_from(t_link *a, t_link *b, t_loc from, t_size to, t_out *out);
-void	send_from_helper(t_link *a, t_link *b, t_loc from, t_size to, t_out *out);
-
+void	sort_five(t_link *a, t_link *b, t_out *out);
+void	send_bottom(t_link *a, t_link *b, t_loc from, t_size to);
+void	send_from(t_link *a, t_link *b, t_loc from, t_size to);
 t_node	*get_comp(t_link *a, t_link *b, t_chunk chunk);
-void	split_chunk(t_link *a, t_link *b, t_split *splt, t_chunk chnk, t_out *out);
-
-
+void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk);
 void	top_a(t_link *a, t_link *b, t_loc loc, t_out *out);
 void	top_b(t_link *a, t_link *b, t_loc loc, t_out *out);
 void	bottom_a(t_link *a, t_link *b, t_loc loc, t_out *out);
 void	bottom_b(t_link *a, t_link *b, t_loc loc, t_out *out);
+
+/* UTILS */
+void	stack_init(t_link *stack, t_out *out, char c);
+void	output_init(t_out *out);
+void	split_init_len(t_split *split);
+void	split_init(t_split *split, t_loc loc);
+t_node	*ft_allocate(void);
+int		ft_nodecmp(t_node *node, t_link *stack, int len);
+int		ft_issorted(t_link *stack, int len);
+void	ft_two(t_link *a, t_link *b, t_out *out);
+void	ft_three_four(t_link *a, t_link *b, int pos, t_out *out);
+int		ft_ismax(t_link *a);
+void	ft_free(char **str, int check);
+void	ft_free_out(t_out *out);
+void	ft_exit(t_link *stack, int i);
+void	ft_end(t_link *a, t_link *b, t_out *out, int i);
 
 #endif

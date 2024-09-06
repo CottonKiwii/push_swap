@@ -3,4 +3,5 @@ push_swap_visualizer
 imgui.ini
 %.o
 obj/
+checker_linux
 .clangd

@@ -6,14 +6,17 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:49:13 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/06 12:35:52 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:04:08 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	send_bottom(t_link *a, t_link *b, t_loc from, t_size to, t_out *out)
+void	send_bottom(t_link *a, t_link *b, t_loc from, t_size to)
 {
+	t_out	*out;
+
+	out = a->out;
 	if (from == BOTTOM_A)
 	{
 		if (to == MAX)
@@ -34,8 +37,11 @@ void	send_bottom(t_link *a, t_link *b, t_loc from, t_size to, t_out *out)
 	}
 }
 
-void	send_from(t_link *a, t_link *b, t_loc from, t_size to, t_out *out)
+void	send_from(t_link *a, t_link *b, t_loc from, t_size to)
 {
+	t_out	*out;
+
+	out = a->out;
 	if (from == TOP_A)
 	{
 		if (to == MAX)
@@ -55,7 +61,7 @@ void	send_from(t_link *a, t_link *b, t_loc from, t_size to, t_out *out)
 			top_b(a, b, BOTTOM_B, out);
 	}
 	else
-		send_from_helper(a, b, from, to, out);
+		send_bottom(a, b, from, to);
 }
 
 t_node	*get_comp(t_link *a, t_link *b, t_chunk chunk)
@@ -70,9 +76,8 @@ t_node	*get_comp(t_link *a, t_link *b, t_chunk chunk)
 		return (b->last);
 }
 
-void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk, t_out *out)
+void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk)
 {
-	t_node	*comp;
 	int		max;
 	int		mid;
 
@@ -81,21 +86,20 @@ void	split_chunk(t_link *a, t_link *b, t_split *split, t_chunk chunk, t_out *out
 	split_init(split, chunk.loc);
 	while (chunk.len > 0)
 	{
-		comp = get_comp(a, b, chunk);
-		if (comp->procsd >= max)
+		if (get_comp(a, b, chunk)->procsd >= max)
 		{
 			split->max.len++;
-			send_from(a, b, chunk.loc, MAX, out);
+			send_from(a, b, chunk.loc, MAX);
 		}
-		else if (comp->procsd >= mid)
+		else if (get_comp(a, b, chunk)->procsd >= mid)
 		{
 			split->mid.len++;
-			send_from(a, b, chunk.loc, MID, out);
+			send_from(a, b, chunk.loc, MID);
 		}
 		else
-	{
+		{
 			split->min.len++;
-			send_from(a, b, chunk.loc, MIN, out);
+			send_from(a, b, chunk.loc, MIN);
 		}
 		chunk.len--;
 	}

@@ -6,7 +6,7 @@
 #    By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 10:42:42 by jwolfram          #+#    #+#              #
-#    Updated: 2024/09/05 17:42:44 by jwolfram         ###   ########.fr        #
+#    Updated: 2024/09/06 15:15:46 by jwolfram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,16 +36,17 @@ SRCS_DIR := src
 
 SRCS_FILES := main \
 			  stack \
-			  output \
 			  tester \
 			  sort/sort \
 			  sort/send \
 			  sort/move \
 			  sort/small_sort \
+			  operations/output \
 			  operations/swap \
 			  operations/rotate \
 			  operations/push \
 			  utils/utils \
+			  utils/utils_sort \
 			  utils/init \
 			  utils/free \
 
@@ -100,4 +101,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+norm:
+	norminette ${SRCS}
+
+.PHONY: all clean fclean re norm

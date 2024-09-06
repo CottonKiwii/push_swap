@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 19:35:09 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/09/05 17:26:18 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:11:00 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_issorted(t_link *stack, int len)
 		if (!cur->next)
 			break ;
 		next = cur->next;
-		if (cur->content >= next->content)	
+		if (cur->content >= next->content)
 			return (ERR);
 		cur = cur->next;
 		len--;
